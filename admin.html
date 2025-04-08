@@ -12,53 +12,27 @@
         <div class="header">
             <div class="title">
                 <span class="icon">?</span>
-                <h2>Approval Request</h2>
-            </div>
-            <div class="status" id="status">PENDING</div>
-            <span id="requestIndicator" class="request-indicator"></span>
-            <div class="actions">
-                <button id="prevBtn" aria-label="Previous room request">Previous</button>
-                <button id="nextBtn" aria-label="Next room request">Next</button>
-                <button id="approveBtn" aria-label="Approve room request">Approve</button>
-                <button id="denyBtn" aria-label="Deny room request">Deny</button>
-                <button id="resetBtn" style="display: none;">Reset</button>
+                <h2>Pending Room Requests</h2>
             </div>
         </div>
 
         <div class="confirmation" id="confirmationMessage"></div>
 
-        <div class="info">
-            <div class="info-item">
-                <span>Submitter</span>
-                <p id="submitter"></p>
-            </div>
-            <div class="info-item">
-                <span>Date Submitted</span>
-                <p id="dateSubmitted"></p>
-            </div>
-            <div class="info-item">
-                <span>Approver</span>
-                <p id="approver"></p>
-            </div>
-            <div class="info-item">
-                <span>Room</span>
-                <p id="roomName"></p>
-            </div>
-        </div>
-
-        <div class="details">
-            <h3>Details</h3>
-            <div class="details-content">
-                <img id="roomImage" src="" alt="Room Image" class="room-image">
-                <div class="room-info">
-                    <p><strong>Owner's Name:</strong> <span id="ownerName"></span></p>
-                    <p><strong>Room's Type:</strong> <span id="roomType"></span></p>
-                    <p><strong>Room's Name:</strong> <span id="roomNameDetail"></span></p>
-                    <p><strong>Room's Location:</strong> <span id="roomLocation"></span></p>
-                    <p><strong>Room's Capacity:</strong> <span id="roomCapacity"></span></p>
-                    <p><strong>Room's Price per day:</strong> <span id="roomPrice" class="price"></span></p>
-                </div>
-            </div>
+        <div class="rooms-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Room Type</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                        <th>Price/Day</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="roomsTableBody"></tbody>
+            </table>
         </div>
     </div>
 

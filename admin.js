@@ -1,170 +1,153 @@
-// Get DOM elements
-const statusElement = document.getElementById('status');
-const approveBtn = document.getElementById('approveBtn');
-const denyBtn = document.getElementById('denyBtn');
-const resetBtn = document.getElementById('resetBtn');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const requestIndicator = document.getElementById('requestIndicator');
 const confirmationMessage = document.getElementById('confirmationMessage');
+const roomsTableBody = document.getElementById('roomsTableBody');
 
-// Elements to populate with data
-const submitterElement = document.getElementById('submitter');
-const dateSubmittedElement = document.getElementById('dateSubmitted');
-const approverElement = document.getElementById('approver');
-const roomNameElement = document.getElementById('roomName');
-const roomNameDetailElement = document.getElementById('roomNameDetail');
-const ownerNameElement = document.getElementById('ownerName');
-const roomTypeElement = document.getElementById('roomType');
-const roomLocationElement = document.getElementById('roomLocation');
-const roomCapacityElement = document.getElementById('roomCapacity');
-const roomPriceElement = document.getElementById('roomPrice');
-const roomImageElement = document.getElementById('roomImage');
-
-// Variables to store data and track current request
 let roomData = [];
-let currentIndex = 0;
 
-// Function to format a date to "DD-MMM-YYYY" (e.g., "28-Mar-2025")
-function formatDate(isoDate) {
+console.log("test")
+
+// Utility function to get Nepal Standard Time (UTC+5:45)
+function getNepalTime(isoDate) {
     const date = new Date(isoDate);
-    const options = { day: '2-digit', month: 'short', year: 'numeric' };
-    return date.toLocaleDateString('en-GB', options).replace(/ /g, '-');
+    const nepalOffsetMinutes = 345;
+    const localOffsetMinutes = date.getTimezoneOffset();
+    return new Date(date.getTime() + (nepalOffsetMinutes + localOffsetMinutes) * 60 * 1000);
 }
 
-// Function to fetch data
-async function fetchRoomData() {
-    try {
-        const response = await fetch('mockdata.json');
-        roomData = await response.json();
-        if (roomData.length === 0) {
-            throw new Error('No room requests found.');
-        }
-        displayRoom(currentIndex); // Display the first room initially
-    } catch (error) {
-        console.error('Error fetching room data:', error);
-        confirmationMessage.textContent = 'Error loading room data. Please try again later.';
-        confirmationMessage.style.color = '#721c24';
-        confirmationMessage.style.display = 'block';
-    }
+// Utility function to format date
+function formatDateTime(isoDate) {
+    const date = getNepalTime(isoDate);
+    const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+    return date.toLocaleString('en-GB', options).replace(',', '');
 }
 
-// Function to display a room request based on the index
-function displayRoom(index) {
-    const room = roomData[index];
-
-    // Populate the fields with data
-    submitterElement.textContent = room.submitter;
-    dateSubmittedElement.textContent = formatDate(room.dateSubmitted); // Format the date
-    approverElement.textContent = room.approver;
-    roomNameElement.textContent = room.roomName;
-    roomNameDetailElement.textContent = room.roomName;
-    ownerNameElement.textContent = room.ownerName;
-    roomTypeElement.textContent = room.roomType;
-    roomLocationElement.textContent = room.roomLocation;
-    roomCapacityElement.textContent = room.roomCapacity;
-    roomPriceElement.textContent = room.roomPrice;
-    roomImageElement.src = room.imageUrl;
-
-    // Update request indicator
-    requestIndicator.textContent = `Request ${index + 1} of ${roomData.length}`;
-
-    // Update status from localStorage (if it exists for this room)
-    const savedStatus = localStorage.getItem(`roomStatus_${room.id}`);
-    const savedBgColor = localStorage.getItem(`statusBgColor_${room.id}`);
-    const savedTextColor = localStorage.getItem(`statusTextColor_${room.id}`);
-
-    if (savedStatus && savedBgColor && savedTextColor) {
-        statusElement.textContent = savedStatus;
-        statusElement.style.backgroundColor = savedBgColor;
-        statusElement.style.color = savedTextColor;
-        approveBtn.disabled = true;
-        denyBtn.disabled = true;
-        resetBtn.style.display = 'inline-block';
-    } else {
-        statusElement.textContent = 'PENDING';
-        statusElement.style.backgroundColor = '#E0E0E0';
-        statusElement.style.color = '#000';
-        approveBtn.disabled = false;
-        denyBtn.disabled = false;
-        resetBtn.style.display = 'none';
-    }
-
-    // Update navigation button states
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === roomData.length - 1;
-}
-
-// Function to show confirmation message
+// Show confirmation message
 function showConfirmation(message, color) {
     confirmationMessage.textContent = message;
     confirmationMessage.style.color = color;
     confirmationMessage.style.display = 'block';
-    setTimeout(() => {
-        confirmationMessage.style.display = 'none';
-    }, 3000); // Hide after 3 seconds
+    setTimeout(() => confirmationMessage.style.display = 'none', 3000);
 }
 
-// Function to update status and save to localStorage
-function updateStatus(status, bgColor, textColor) {
-    const room = roomData[currentIndex];
-    statusElement.textContent = status;
-    statusElement.style.backgroundColor = bgColor;
-    statusElement.style.color = textColor;
-    localStorage.setItem(`roomStatus_${room.id}`, status);
-    localStorage.setItem(`statusBgColor_${room.id}`, bgColor);
-    localStorage.setItem(`statusTextColor_${room.id}`, textColor);
+// Fetch all pending rooms
+async function fetchRooms() {
+    console.log("test")
+    try {
+        const response = await fetch('fetch_rooms.php', {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+        });
+        console.log("Response received:", response);
+        
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        roomData = await response.json();
+        console.log('Fetched roomData:', roomData);
 
-    // Disable buttons after action
-    approveBtn.disabled = true;
-    denyBtn.disabled = true;
-    resetBtn.style.display = 'inline-block';
+        if (!Array.isArray(roomData)) {
+            console.error('Invalid response format:', roomData);
+            throw new Error(roomData.error || 'Response is not an array.');
+        }
+        if (roomData.length === 0) {
+            showConfirmation('No pending room requests found.', '#721c24');
+            roomsTableBody.innerHTML = '<tr><td colspan="7">No pending requests</td></tr>';
+            return;
+        }
+
+        displayRooms();
+        showConfirmation('Pending room requests loaded successfully!', '#155724');
+    } catch (error) {
+        console.error('Error fetching rooms:', error);
+        showConfirmation('Error loading rooms: ' + error.message, '#721c24');
+        roomsTableBody.innerHTML = '<tr><td colspan="7">Error loading data</td></tr>';
+    }
 }
 
-// Load data on page load
-document.addEventListener('DOMContentLoaded', () => {
-    fetchRoomData();
-});
+// Display all rooms in the table
+// Display all rooms in the table
+function displayRooms() {
+    roomsTableBody.innerHTML = ''; // Clear existing rows
+    roomData.forEach(room => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${room.name || 'N/A'}</td> <!-- Room Name -->
+            <td>${room.room_type || 'N/A'}</td> <!-- Room Type -->
+            <td>${room.location || 'N/A'}</td> <!-- Location -->
+            <td>${room.capacity || 'N/A'}</td> <!-- Capacity -->
+            <td>${room.price ? `Rs ${room.price}/-` : 'N/A'}</td> <!-- Price/Day -->
+            <td><img src="${room.image || 'https://via.placeholder.com/100x60'}" alt="Room Image"></td> <!-- Image -->
+            <td class="actions">
+                <button class="approve-btn" data-id="${room.id}" ${room.status !== 'pending' ? 'disabled' : ''}>Approve</button>
+                <button class="deny-btn" data-id="${room.id}" ${room.status !== 'pending' ? 'disabled' : ''}>Deny</button>
+                <button class="reset-btn" data-id="${room.id}" style="display: ${room.status === 'pending' ? 'none' : 'inline-block'}">Reset</button>
+            </td>
+        `;
+        roomsTableBody.appendChild(row);
+    });
 
-// Previous button event listener
-prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        displayRoom(currentIndex);
+    // Add event listeners to buttons
+    document.querySelectorAll('.approve-btn').forEach(btn => btn.addEventListener('click', () => updateStatus(btn.dataset.id, 'APPROVED')));
+    document.querySelectorAll('.deny-btn').forEach(btn => btn.addEventListener('click', () => updateStatus(btn.dataset.id, 'DENIED')));
+    document.querySelectorAll('.reset-btn').forEach(btn => btn.addEventListener('click', () => resetStatus(btn.dataset.id)));
+}
+
+
+
+// Update room status
+async function updateStatus(roomId, status) {
+    const person = prompt('Enter your name (Approver/Denier):', '');
+    if (!person) {
+        showConfirmation('Name is required.', '#721c24');
+        return;
     }
-});
 
-// Next button event listener
-nextBtn.addEventListener('click', () => {
-    if (currentIndex < roomData.length - 1) {
-        currentIndex++;
-        displayRoom(currentIndex);
+    try {
+        const response = await fetch('update_status.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: roomId,
+                status: status,
+                approver: status === 'APPROVED' ? person : null,
+                denier: status === 'DENIED' ? person : null
+            })
+        });
+
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        const updatedRoom = await response.json();
+
+        const roomIndex = roomData.findIndex(r => r.id === updatedRoom.id);
+        if (roomIndex !== -1) roomData[roomIndex] = updatedRoom;
+
+        fetchRooms(); // Refresh the list
+        showConfirmation(`Room ${status.toLowerCase()} successfully!`, status === 'APPROVED' ? '#155724' : '#721c24');
+    } catch (error) {
+        console.error('Error updating status:', error);
+        showConfirmation('Error updating status: ' + error.message, '#721c24');
     }
-});
+}
 
-// Approve button event listener
-approveBtn.addEventListener('click', () => {
-    updateStatus('APPROVED', '#d4edda', '#155724');
-    showConfirmation('Room request approved!', '#155724');
-});
+// Reset room status
+async function resetStatus(roomId) {
+    try {
+        const response = await fetch('reset_status.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: roomId })
+        });
 
-// Deny button event listener
-denyBtn.addEventListener('click', () => {
-    updateStatus('DENIED', '#f8d7da', '#721c24');
-    showConfirmation('Room request denied!', '#721c24');
-});
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        const updatedRoom = await response.json();
 
-// Reset button event listener
-resetBtn.addEventListener('click', () => {
-    const room = roomData[currentIndex];
-    statusElement.textContent = 'PENDING';
-    statusElement.style.backgroundColor = '#E0E0E0';
-    statusElement.style.color = '#000';
-    approveBtn.disabled = false;
-    denyBtn.disabled = false;
-    resetBtn.style.display = 'none';
-    localStorage.removeItem(`roomStatus_${room.id}`);
-    localStorage.removeItem(`statusBgColor_${room.id}`);
-    localStorage.removeItem(`statusTextColor_${room.id}`);
-    showConfirmation('Status reset to PENDING.', '#333');
-});
+        const roomIndex = roomData.findIndex(r => r.id === updatedRoom.id);
+        if (roomIndex !== -1) roomData[roomIndex] = updatedRoom;
+
+        fetchRooms(); // Refresh the list
+        showConfirmation('Room status reset to PENDING.', '#333');
+    } catch (error) {
+        console.error('Error resetting status:', error);
+        showConfirmation('Error resetting status: ' + error.message, '#721c24');
+    }
+}
+
+// Load rooms on page load
+document.addEventListener('DOMContentLoaded', fetchRooms);
