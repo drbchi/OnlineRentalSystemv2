@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Management - Casalux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="propclient.css">
+</head>
+<body>
+    <!-- Header Section (Added Client Version from client.html) -->
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Casalux Logo" class="logo-img">
+                <div class="logo">Casalux</div>
+            </div>
+            <div class="auth-buttons">
+                <div class="user-info">
+                    <span class="username" id="username">JohnDoe</span>
+                    <a href="../user-profile/user-profile.html">
+                        <img src="../clients/user2.png" alt="Profile Picture" class="profile-pic" id="profile-pic">
+                    </a>
+                </div>
+            </div>
+        </div> 
+
+        <!-- Navigation Menu (Added Client Version) -->
+        <nav>
+            <ul>
+                <li class="home"><a href="../clients/client.html">Home</a></li>
+                <li class="stays"><a href="../staysSection/staysclient.html">Stays</a></li>
+                <li class="listyourproperty"><a href="../PropertyManagement/propclient.html" class="active">List your rooms</a></li>
+                <li class="aboutus"><a href="../aboutusSection/aboutusclient.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Original Content (Unchanged) -->
+    <div class="container">
+        <div class="sidebar">
+            <button class="sidebar-btn" onclick="showSection('create-property')">Create Property</button>
+            <button class="sidebar-btn" onclick="showSection('view-properties')">View Properties</button>
+            <button class="sidebar-btn" onclick="showSection('update-property')">Update Property</button>
+            <button class="sidebar-btn" onclick="showSection('delete-property')">Delete Property</button>
+        </div>
+
+        <div class="content">
+            <!-- Create Property Section -->
+            <div id="create-property" class="section active">
+                <h2 class="header">Create Property</h2>
+                <form id="create-form">
+                    <div class="input-group"><span>Image Link:</span><input type="text" id="image_url" placeholder="Enter image URL"></div>
+                    <div class="input-group"><span>Room Name:</span><input type="text" id="room_name" placeholder="Enter room name"></div>
+                    <div class="input-group"><span>Description:</span><input type="text" id="description" placeholder="Enter description"></div>
+                    <div class="input-group"><span>Price:</span><input type="number" id="price" placeholder="Enter price"></div>
+                    <div class="input-group"><span>Room Type:</span><select id="room_type">
+                        <option>Suite</option><option>Deluxe</option><option>Single</option>
+                        <option>Double</option><option>Family</option><option>Penthouse</option>
+                    </select></div>
+                    <div class="input-group"><span>Capacity:</span><input type="number" id="capacity" placeholder="Enter capacity"></div>
+                    <div class="input-group"><span>Location:</span><input type="text" id="location" placeholder="Enter location"></div>
+                    <button type="submit" class="create-btn">Create</button>
+                </form>
+            </div>
+
+            <!-- View Properties Section -->
+            <div id="view-properties" class="section">
+                <h2 class="header">View Properties</h2>
+                <button onclick="fetchProperties()">Refresh List</button>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Room Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Room Type</th>
+                            <th>Capacity</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody id="property-list"></tbody>
+                </table>
+            </div>
+
+            <!-- Update Property Section -->
+            <div id="update-property" class="section">
+                <h2 class="header">Update Property</h2>
+                <form id="update-form">
+                    <div class="input-group"><span>Property ID:</span><input type="number" id="update_id" placeholder="Enter property ID" required></div>
+                    <div class="input-group"><span>Room Name:</span><input type="text" id="update_room_name" placeholder="Enter new name"></div>
+                    <div class="input-group"><span>Description:</span><input type="text" id="update_description" placeholder="Enter new description"></div>
+                    <div class="input-group"><span>Price:</span><input type="number" id="update_price" placeholder="Enter new price"></div>
+                    <div class="input-group"><span>Room Type:</span><select id="update_room_type">
+                        <option value="">Select Room Type</option>
+                        <option value="Suite">Suite</option>
+                        <option value="Deluxe">Deluxe</option>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="Family">Family</option>
+                        <option value="Penthouse">Penthouse</option>
+                    </select></div>
+                    <div class="input-group"><span>Capacity:</span><input type="number" id="update_capacity" placeholder="Enter new capacity"></div>
+                    <div class="input-group"><span>Location:</span><input type="text" id="update_location" placeholder="Enter new location"></div>
+                    <button type="submit" class="update-btn">Update</button>
+                </form>
+            </div>
+
+            <!-- Delete Property Section -->
+            <div id="delete-property" class="section">
+                <h2 class="header">Delete Property</h2>
+                <form id="delete-form">
+                    <div class="input-group"><span>Property ID:</span><input type="number" id="delete_id" placeholder="Enter property ID" required></div>
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="propclient.js"></script>
+</body>
+</html>
