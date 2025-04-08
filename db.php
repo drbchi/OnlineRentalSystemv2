@@ -1,16 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";  
-$password = "";      
-$database = "rental"; 
+$host = "localhost";
+$db = "booking";      
+$user = "root";      
+$pass = "";      
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
-    die(json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]));
+    die("Database connection failed: " . $conn->connect_error);
 }
-
-
-$conn->set_charset("utf8");
-
 ?>
