@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stays - Casalux</title>
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="staysclient.css">
+</head>
+<body>
+    <!-- Header Section (Updated to Client Version with Circular Profile Pic) -->
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Casalux Logo" class="logo-img">
+                <div class="logo">Casalux</div>
+            </div>
+            <div class="auth-buttons">
+                <div class="user-info">
+                    <span class="username" id="username">JohnDoe</span>
+                    <a href="../user-profile/user-profile.html">
+                        <img src="../clients/user2.png" alt="Profile Picture" class="profile-pic" id="profile-pic">
+                    </a>
+                </div>
+            </div>
+        </div> 
+
+        <!-- Navigation Menu (Updated to Client Version) -->
+        <nav>
+            <ul>
+                <li class="home"><a href="../clients/client.html">Home</a></li>
+                <li class="stays"><a href="../staysSection/staysclient.html" class="active">Stays</a></li>
+                <li class="listyourproperty"><a href="../PropertyManagement/propclient.html">List your rooms</a></li>
+                <li class="aboutus"><a href="../aboutusSection/aboutusclient.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Everything below remains unchanged -->
+    <div class="container">
+        <h1>Stays</h1>
+
+        <!-- Filter and Sort Bar -->
+        <div class="filter-bar">
+            <div class="filter">
+                <label for="room-type">Apply filters: </label>
+                <select id="room-type">
+                    <option value="">All</option>
+                    <option value="Suite">Suite</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="singleroom">Single</option>
+                    <option value="doubleroom">Double</option>
+                    <option value="familyroom">Family</option>
+                    <option value="Penthouse">Penthouse</option>
+                </select>
+            </div>
+            <div class="pagination-info" id="pagination-info">
+                Showing 1 to 6 of 16 (3 Pages)
+            </div>
+            <div class="sort">
+                <label for="sort-by">Sort By: </label>
+                <select id="sort-by">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Property Grid -->
+        <div class="property-grid" id="property-grid">
+            <!-- Properties will be dynamically added here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be dynamically added here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Online Rental Website. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+    <script src="staysclient.js"></script>
+</body>
+</html>
