@@ -8,11 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <a href="../visitors/visitors.html" class="back-btn">&#9664; Back to home</a>
+        <a href="../visitors/visitors.html" class="back-btn">◀ Back to home</a>
         <h1>Welcome!</h1>
         <p>Don't have an account? <a href="sign-up.html" class="create-account">Create a free account</a></p>
         
-        <!-- Login form, now sending data to login.php -->
         <form action="login.php" method="POST">
             <label for="email">Email</label>
             <input type="email" id="email" class="input-field" name="email" placeholder="Enter your email" required>
@@ -20,6 +19,11 @@
             <label for="password">Password</label>
             <input type="password" id="password" class="input-field" name="password" placeholder="Enter your password" required>
 
+            <div class="forgot-password">
+                <a href="forgot-password.html" class="forgot-password-link">Forgot Password?</a>
+            </div>
+
+            <input type="hidden" name="redirect_to" id="redirect_to">
             <button type="submit" class="login-btn">Log in</button>
         </form>
     </div>
