@@ -16,55 +16,21 @@
             <input type="text" class="input-field" name="username" placeholder="Username" required>
             <input type="email" class="input-field" name="email" placeholder="Email" required>
             
-            <!-- Password Field with Eye Button -->
             <div class="password-field">
                 <input type="password" class="input-field" name="password" id="password" placeholder="Password" required>
-                <button type="button" class="eye-btn" onclick="togglePasswordVisibility('password')">👁️</button>
+                <button type="button" class="eye-btn" onclick="togglePasswordVisibility('password')">👁</button>
             </div>
             
-            <!-- Confirm Password Field with Eye Button -->
             <div class="password-field">
                 <input type="password" class="input-field" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
-                <button type="button" class="eye-btn" onclick="togglePasswordVisibility('confirm_password')">👁️</button>
+                <button type="button" class="eye-btn" onclick="togglePasswordVisibility('confirm_password')">👁</button>
             </div>
 
+            <input type="hidden" name="redirect_to" id="redirect_to">
             <button type="submit" class="signup-btn">Sign Up</button>
         </form>
     </div>
 
-    <script>
-        // Function to toggle password visibility
-        function togglePasswordVisibility(inputId) {
-            var inputField = document.getElementById(inputId);
-            var type = inputField.type === "password" ? "text" : "password";
-            inputField.type = type; // Toggle the type between "password" and "text"
-        }
-
-        // Handle form submission via AJAX
-        document.getElementById("signup-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            var formData = new FormData(this); // Get form data
-
-            // Send the data via AJAX
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "sign-up.php", true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    if (xhr.responseText === "success") {
-                        alert("Account created successfully!");
-                        setTimeout(function() {
-                            location.reload(); // Refresh the page after successful sign-up
-                        }, 500); // Add a slight delay before refreshing the page
-                    } else if (xhr.responseText === "email_exists") {
-                        alert("Your email has already been used!");
-                    } else {
-                        alert("Error: Could not create account.");
-                    }
-                }
-            };
-            xhr.send(formData); // Send form data
-        });
-    </script>
-</body>
+    <script src="sign.up.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92d43bf13babc6af',t:'MTc0NDE0MTIwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
