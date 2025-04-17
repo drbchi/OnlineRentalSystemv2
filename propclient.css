@@ -1,0 +1,360 @@
+body {
+    font-family: 'Inria Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Header Section (Added from Client Layout) */
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #DECCBF;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+}
+
+.logo-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    background-color: transparent;
+}
+
+.logo-img {
+    width: auto;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 0px;
+    background-color: transparent;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    background: none;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+}
+
+.profile-pic {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 2px solid rgb(0, 0, 0);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: block; 
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+nav {
+    margin-top: 30px;
+    margin-left: 40px;
+    background-color: transparent;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    background-color: transparent;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    color: #222;
+}
+
+nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #111;
+    font-weight: 600;
+}
+
+.home, .stays, .listyourproperty, .aboutus {
+    background-color: transparent;
+}
+
+/* Original Styles (Unchanged) */
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    margin: 20px auto; /* Added margin to avoid header overlap */
+}
+
+.sidebar {
+    background-color: #d9c3b0;
+    padding: 20px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-btn {
+    font-family: 'Inria Sans', sans-serif;
+    background-color: transparent;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, border-radius 0.3s;
+    border-radius: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar-btn:hover {
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+.section.active {
+    display: flex;
+}
+
+.header {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    background: #ddd;
+    padding: 12px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input, select {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-btn {
+    background: black;
+    color: white;
+}
+
+.update-btn {
+    background: black;
+    color: white;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+.map {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.location-display {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group {
+    background: #ddd;
+    padding: 12px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group span {
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.input-group input, .input-group select {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.rooms-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.room-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+}
+
+.room-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.room-card h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.room-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.room-card button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.room-card button:hover {
+    opacity: 0.85;
+}
+
+#property-list img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+}

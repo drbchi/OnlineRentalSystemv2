@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Approval</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <span class="icon">?</span>
+                <h2>Pending Room Requests</h2>
+            </div>
+        </div>
+
+        <div class="confirmation" id="confirmationMessage"></div>
+
+        <div class="rooms-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Room Type</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                        <th>Price/Day</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="roomsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
