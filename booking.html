@@ -15,7 +15,7 @@
         <div class="container">
             <div class="left-column">
                 <div class="room-box">
-                    <h2 class="room-title">Room</h2>
+                    <h2 class="room-title">Room Selection</h2>
                     <div class="form-group">
                         <label for="room-type">Select Room Type</label>
                         <select id="room-type">
@@ -27,6 +27,7 @@
                             <option value="Family">Family</option>
                         </select>
                     </div>
+                    <div class="divider"></div>
                     <div class="room-info">
                         <div class="room-location">Why Book With Us?</div>
                         <div class="room-rating">
@@ -38,8 +39,9 @@
                             <span class="review-count">Lowest rates</span>
                         </div>
                     </div>
-                    <div class="room-info" style="margin-top: 15px;">
-                        <div class="room-location">More Benefits</div>
+                    <div class="divider"></div>
+                    <div class="room-info">
+                        <div class "room-location">More Benefits</div>
                         <div class="room-rating">
                             <span class="rating-text">Instant Booking</span>
                             <span class="rating-score">No delays</span>
@@ -49,6 +51,7 @@
                             <span class="review-count">SSL encrypted</span>
                         </div>
                     </div>
+                    <div class="divider"></div>
                     <ul class="room-features">
                         <li class="feature-item">Pets allowed</li>
                         <li class="feature-item">Free WiFi</li>
@@ -70,53 +73,40 @@
                             <div class="booking-time" id="check-outtime-display">Not Selected</div>
                         </div>
                     </div>
+                    <div class="divider"></div>
                     <div class="booking-summary">
                         <div class="summary-row">
                             <span class="summary-label">Total length of stay</span>
                             <span class="summary-value" id="stay-length-display">Not Selected</span>
                         </div>
-                        <div class="summary-row">
-                            <span class="summary-label">Number of people</span>
-                            <span class="summary-value" id="people-display">Not Selected</span>
-                        </div>
                     </div>
-                </div>
-                <div class="box payment-process-box">
-                    <h2>Payment Process</h2>
-                    <ul class="payment-details">
-                        <li>Partial Payment: Pay 50% now via eSewa or bank transfer, and 50% upon arrival.</li>
-                        <li>Booking Review: Check room, duration, and total price before payment.</li>
-                        <li>Security: Payment details are not stored or shared.</li>
-                        <li>Cancellation: Refund available if canceled before 5 days. No refunds for last-minute cancellations.</li>
-                        <li>Confirmation: Email/SMS confirmation sent after payment.</li>
-                    </ul>
                 </div>
             </div>
             <div class="right-column">
-                <div class="box">
+                <div class="box enter-details-box">
                     <h2>Enter Your Details</h2>
                     <div class="name-group">
-                        <div class="form-group" style="flex: 1;">
+                        <div class="form-group">
                             <label for="firstName">First name</label>
-                            <input type="text" id="firstName">
+                            <input type="text" id="firstName" placeholder="Enter your first name">
                         </div>
-                        <div class="form-group" style="flex: 1;">
+                        <div class="form-group">
                             <label for="lastName">Last name</label>
-                            <input type="text" id="lastName">
+                            <input type="text" id="lastName" placeholder="Enter your last name">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone number</label>
-                        <input type="tel" id="phone">
-                        <div class="note">Contact the person to contact you today</div>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                        <div class="note">We'll contact you today if needed</div>
                     </div>
                     <div class="form-group">
                         <label for="region">Region</label>
-                        <input type="text" id="region">
+                        <input type="text" id="region" placeholder="Enter your region">
                     </div>
                     <div class="checkbox-option">
-                        <input type="checkbox" id="confirmation">
-                        <label for="confirmation">Yes, I'd like free paperless confirmation (recommended)</label>
+                        <input type="checkbox" id="confirmation" checked>
+                        <label for="confirmation">Send me a paperless confirmation (recommended)</label>
                     </div>
                     <div class="divider"></div>
                     <div class="form-group">
@@ -124,11 +114,11 @@
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" id="guestMe" name="bookingFor" value="me" checked>
-                                <label for="guestMe">I am the main guest.</label>
+                                <label for="guestMe">I am the main guest</label>
                             </div>
                             <div class="radio-option">
                                 <input type="radio" id="guestSomeone" name="bookingFor" value="someone">
-                                <label for="guestSomeone">Booking is for someone else</label>
+                                <label for="guestSomeone">Booking for someone else</label>
                             </div>
                         </div>
                     </div>
@@ -145,9 +135,40 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="box additional-features-box">
+                    <h2>Eco-Friendly Amenities</h2>
+                    <ul class="room-features">
+                        <li class="feature-item">Swimming Pool (Solar-Heated)</li>
+                        <li class="feature-item">Daily Housekeeping (Eco Products)</li>
+                        <li class="feature-item">24/7 Guard Security</li>
+                        <li class="feature-item">Energy-Saving Lighting</li>
+                        <li class="feature-item">Rainwater Harvesting System</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="payment-container">
+            <div class="left-column">
+                <div class="box payment-process-box">
+                    <h2>Payment Process</h2>
+                    <ul class="payment-details">
+                        <li>Partial Payment: Pay 50% now via eSewa or bank transfer, and 50% upon arrival.</li>
+                        <li>Booking Review: Check room, duration, and total price before payment.</li>
+                        <li>Security: Payment details are not stored or shared.</li>
+                    </ul>
                     <div class="divider"></div>
+                    <ul class="payment-details">
+                        <li>Cancellation: Refund available if canceled before 5 days. No refunds for last-minute cancellations.</li>
+                        <li>Confirmation: Email/SMS confirmation sent after payment.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="box payment-option-box">
                     <h2>Your Payment Option</h2>
                     <div class="form-group">
+                        <label for="payment-method">Payment Method</label>
                         <select id="payment-method">
                             <option value="Esewa">Esewa</option>
                             <option value="Bank Account">Bank Account</option>
@@ -155,13 +176,12 @@
                     </div>
                     <div class="divider"></div>
                     <div class="form-group">
-                        <label for="booking-option">Please select your Preference</label>
+                        <label for="booking-option">Select Booking Preference</label>
                         <select id="booking-option">
-                            <option value="">-- Please Select --</option>
+                            <option value="">-- Select an Option --</option>
                             <option value="checkin">Check-in date</option>
                             <option value="checkout">Check-out date</option>
                             <option value="staylength">Length of stay</option>
-                            <option value="people">Number of people</option>
                             <option value="checkintime">Check-in Time</option>
                             <option value="checkouttime">Check-out Time</option>
                         </select>
@@ -171,7 +191,7 @@
                         <input type="text" id="option-input">
                     </div>
                     <div class="done-button-container">
-                        <button class="done-button">Done</button>
+                        <button class="done-button">Confirm Booking</button>
                     </div>
                 </div>
             </div>
