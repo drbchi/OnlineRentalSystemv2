@@ -1,65 +1,75 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const fromParam = urlParams.get('from');
-    if (fromParam) {
-        document.getElementById("redirect_to").value = fromParam;
+function togglePasswordVisibility(inputId) {
+    const input = document.getElementById(inputId);
+    const eyeIcon = document.getElementById(`eye-${inputId}`);
+
+    if (input.type === "password") {
+        input.type = "text";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    } else {
+        input.type = "password";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    }
+}
+
+document.getElementById("signup-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirm_password");
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
     }
 
-    // Function to toggle password visibility
-    function togglePasswordVisibility(inputId) {
-        var inputField = document.getElementById(inputId);
-        var type = inputField.type === "password" ? "text" : "password";
-        inputField.type = type;
-    }
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "sign-up.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const response = xhr.responseText.trim();
+            const role = formData.get("role");
 
-    // Expose togglePasswordVisibility to the global scope
-    window.togglePasswordVisibility = togglePasswordVisibility;
-
-    // Handle form submission via AJAX
-    document.getElementById("signup-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        var formData = new FormData(this);
-        var password = formData.get('password');
-        var confirmPassword = formData.get('confirm_password');
-
-        // Validate password match
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        console.log("Submitting form data:", Object.fromEntries(formData));
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "sign-up.php", true);
-        xhr.onload = function() {
-            console.log("Response status:", xhr.status);
-            console.log("Response text:", xhr.responseText);
-            if (xhr.status === 200) {
-                if (xhr.responseText.startsWith("success:")) {
-                    const redirectUrl = xhr.responseText.split(':')[1];
-                    alert("Account created successfully! Redirecting to login...");
-                    setTimeout(function() {
-                        window.location.href = redirectUrl;
-                    }, 500);
-                } else if (xhr.responseText === "email_exists") {
-                    alert("Your email has already been used!");
-                } else if (xhr.responseText.startsWith("sql_error")) {
-                    alert("SQL error: " + xhr.responseText);
-                } else if (xhr.responseText.startsWith("db_error")) {
-                    alert("Database error: " + xhr.responseText);
+            if (response === "success") {
+                if (role === "owner") {
+                    Swal.fire({
+                        title: "Owner Account Created!",
+                        text: "Would you like to list your property now?",
+                        icon: "success",
+                        showCancelButton: true,
+                        confirmButtonText: "Yes, let's go!",
+                        cancelButtonText: "Not now"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "../PropertyManagement/prop.html";
+                        } else {
+                            Swal.fire("No problem!", "You can list your property anytime from your dashboard.", "info");
+                        }
+                    });
+                } else if (role === "user") {
+                    Swal.fire("Welcome!", "Account created successfully!", "success").then(() => {
+                        window.location.href = "../Client/client.html";
+                    });
+                } else if (role === "admin") {
+                    Swal.fire("Admin Created!", "Redirecting to admin dashboard...", "success").then(() => {
+                        window.location.href = "../admin/admin/admin.html";
+                    });
                 } else {
-                    alert("Error: Could not create account. Response: " + xhr.responseText);
+                    Swal.fire("Success", "Account created successfully!", "success").then(() => location.reload());
                 }
+            } else if (response === "email_exists") {
+                Swal.fire("Oops!", "Your email has already been used!", "warning");
+            } else if (response === "invalid_email") {
+                Swal.fire("Invalid Email", "Please enter a valid email format.", "error");
+            } else if (response === "weak_password") {
+                Swal.fire("Weak Password", "Password must be at least 6 characters.", "error");
             } else {
-                alert("HTTP Error: " + xhr.status + " - " + xhr.statusText);
+                Swal.fire("Error", response, "error");
             }
-        };
-        xhr.onerror = function() {
-            console.error("Request failed. Network error.");
-            alert("Request failed. Please check your network connection.");
-        };
-        xhr.send(formData);
-    });
+        }
+    };
+
+    xhr.send(formData);
 });
