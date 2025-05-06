@@ -1,0 +1,716 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: transparent; 
+}
+
+body {
+    background-color: #f4f4f4; 
+}
+
+/* Header Layout */
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #DECCBF;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: transparent; 
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif; 
+    background-color: transparent;
+    margin-left: 0px;
+    line-height: 1;
+}
+
+.logo-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    gap: 0px;
+}
+
+.logo-img {
+    width: auto;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Navigation Menu */
+nav {
+    margin-top: 30px;
+    margin-left: 40px;
+    background-color: transparent;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    background-color: transparent;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    color: #222;
+}
+
+nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #111;
+    font-weight: 600;
+}
+
+.home, .stays, .listyourproperty, .aboutus {
+    background-color: transparent;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    background: transparent;
+    display: flex;
+    gap: 10px;
+    padding: 0; 
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+}
+
+.username {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    background: transparent;
+    transition: all 0.4s ease-in-out;
+}
+
+.username:hover {
+    color: #222;
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 2px solid rgb(0, 0, 0);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: block; 
+}
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #F5EFE6;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-family: 'Irina Serif', serif;
+    transition: all 0.4s ease-in-out;
+}
+
+.hero-text h1:hover {
+    color: #222;
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+
+.book-now {
+    padding: 15px 25px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 25px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 13px;
+    font-weight: bold;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.book-now:hover {
+    background-color: #222;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+.hero-image {
+    width: 300px;
+    height: 400px;
+    background: #b3b3b3;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+    margin-right: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 100px;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 100px;
+    transition: all 0.5s ease-out;
+}
+
+.hero-image:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1) contrast(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    background-color: #F5EFE6;
+    padding: 15px;
+    margin-top: -20px;
+}
+
+.search-container {
+    display: flex;
+    gap: 5px;
+    border: 3px solid black;
+    background-color: #DECCBF;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.search-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-container button {
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.search-container button:hover {
+    background-color: #222;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Property Types Section (Browse by Room Type) */
+.property-types {
+    padding: 40px;
+    text-align: center;
+    background: white;
+}
+
+.property-types h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    transition: all 0.4s ease-in-out;
+}
+
+.property-types h2:hover {
+    color: #222;
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Layout for Property Types */
+.property-slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.property-slider {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    background: white;
+    list-style: none; 
+    padding: 0; 
+}
+
+.property-slide {
+    position: relative;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.property-slide img {
+    width: 250px;
+    height: 180px;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.5s ease-out;
+    display: block;
+}
+
+/* Caption for Property Slide */
+.property-slide p {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background: white;
+    margin: 0; 
+    transition: all 0.4s ease-in-out;
+}
+
+.property-slide a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+/* Overlay for Hover Effect */
+.property-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Enhanced Image Hover Effect for Property Slide */
+.property-slide:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.property-slide:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1) contrast(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.property-slide:hover p {
+    color: #222;
+}
+
+.property-slide:hover::after {
+    opacity: 1;
+}
+
+/* Ensure no pseudo-elements are adding unwanted content */
+.property-slide::before {
+    content: none; 
+}
+
+/* Style the slider buttons (if used) */
+.property-slide-button {
+    background: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; 
+}
+
+/* Leaf Container */
+.leaf-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 50px;
+    background-color: white;
+}
+
+.leaves {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.leaf {
+    width: 120px;
+    height: 160px;
+    border-top-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    overflow: hidden;
+}
+
+.leaf img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease-out;
+}
+
+.right-leaf {
+    margin-left: -20px;
+}
+
+.event-text h2 {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+
+.event-text h2:hover {
+    color: #222;
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Best Booked Places Section */
+.bestbooked-types {
+    padding: 50px;
+    text-align: center;
+    background: white; 
+    position: relative; 
+}
+
+.bestbooked-types h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: black; 
+    background: none; 
+    position: relative; 
+    display: inline-block;
+    transition: all 0.4s ease-in-out;
+}
+
+.bestbooked-types h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+    transition: all 0.4s ease-in-out;
+}
+
+.bestbooked-types h2:hover {
+    color: #222;
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bestbooked-types h2:hover::before {
+    background: rgba(255, 255, 255, 0.5); 
+}
+
+.bestbooked-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white !important;
+}
+
+.bestbooked-slider {
+    display: flex;
+    overflow-x: auto;
+    width: 80%;
+    scroll-behavior: smooth;
+    background: white !important;
+}
+
+.bestbooked-slide {
+    position: relative;
+    min-width: 250px;
+    margin: 10px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.bestbooked-slide img {
+    width: 250px;
+    height: 180px;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.5s ease-out;
+}
+
+.bestbooked-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.bestbooked-slide p {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background: white;
+    margin: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.bestbooked-slide:hover p {
+    color: #222;
+}
+
+.bestbooked-slide:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.bestbooked-slide:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1) contrast(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bestbooked-slide:hover::after {
+    opacity: 1;
+}
+
+/* Styles for the Slider Buttons */
+.bestbooked-slide-button {
+    background: white !important;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Style the icons inside the buttons */
+.bestbooked-slide-button i {
+    color: #000;
+    background: transparent;
+    transition: color 0.3s ease;
+}
+
+/* Position the buttons */
+.bestbooked-slide-button.left {
+    margin-right: 10px;
+}
+
+.bestbooked-slide-button.right {
+    margin-left: 10px;
+}
+
+/* Hover effect for the buttons */
+.bestbooked-slide-button:hover {
+    background: rgba(0, 0, 0, 0.1) !important; 
+    transform: scale(1.1);
+}
+
+.bestbooked-slide-button:hover i {
+    color: #333;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 50px 20px;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    transition: none;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.testimonial-card {
+    position: relative;
+    width: 250px;
+    background: #ddd;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: none;
+}
+
+.room-image img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    transition: none;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: none;
+}
+
+.stars {
+    margin-top: 10px;
+    color: gold;
+    font-size: 18px;
+    transition: none;
+}
+
+.testimonial-card p {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: none;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+footer p {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background: transparent;
+    margin: 5px 0;
+}
+
+.footer-links {
+    margin-top: 10px;
+    background-color: black
+}
+
+.footer-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white !important;
+    background-color: black;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border: none;
+    box-shadow: none;
+    font-size: 14px;
+    outline: none !important;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    background-color: black !important;
+    color: #ccc !important;
+}

@@ -1,0 +1,161 @@
+body {
+    font-family: 'Inria Sans', sans-serif;
+    background-color: #E6E6E6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90vw;
+    max-width: 1200px;
+    min-height: auto;
+    max-height: 85vh;
+    background-color: #F9F9F9;
+    border: 1px solid #D5D5D5;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    margin: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #DECCBF;
+    border-bottom: 1px solid #D5D5D5;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 8px;
+}
+
+.confirmation {
+    padding: 8px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    display: none;
+    background-color: #E8F0FE;
+    border-radius: 4px;
+    margin: 10px 15px;
+}
+
+.rooms-list {
+    padding: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #D5D5D5;
+}
+
+th {
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
+td img {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.actions button {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.actions .approve-btn {
+    background-color: #1d6c2f;
+    color: #fff;
+    border: 1px solid #218838;
+}
+
+.actions .approve-btn:hover {
+    background-color: #259b3f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.actions .deny-btn {
+    background-color: #b42735;
+    color: #fff;
+    border: 1px solid #C82333;
+}
+
+.actions .deny-btn:hover {
+    background-color: #e12e40;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.actions .reset-btn {
+    background-color: #6C757D;
+    color: #fff;
+    border: 1px solid #5A6268;
+}
+
+.actions .reset-btn:hover {
+    background-color: #5A6268;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.actions button:disabled {
+    background-color: #e0e0e0;
+    color: #666;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95vw;
+        margin: 10px;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    td img {
+        width: 80px;
+    }
+
+    .actions button {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}

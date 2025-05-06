@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casalux - Online Rental Website</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="visitors.css">
+    <script defer src="visitors.js"></script>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <div class="header-top">
+        <div class="logo-container">
+            <img src="../images/logo.png" alt="Casalux Logo" class="logo-img">
+        <div class="logo">Casalux</div>
+    </div>
+        <div class="auth-buttons">
+            <!-- <button class="register">Register</button> -->
+            <a href="../loginANDsignup/sign-up.html">
+                <button class="register">Register</button>
+            </a>
+
+            <a href="../loginANDsignup/log-in.html">
+                <button class="signin">Sign in</button>
+            </a>
+            <!-- <button class="signin">Sign in</button> -->
+            <!-- <a href="sign-up.html" class="create-account">Create a free account</a> -->
+        </div>
+    </div> 
+
+    <!-- Navigation Menu (Now below the logo) -->
+    <nav>
+        <ul>
+            
+            <li class="home"><a class="active" href="#">Home</a></li>
+            <li class="stays"><a href="../staysSection/stays.html">Stays</a></li>
+            <li class="listyourproperty"> <a href="../PropertyManagement/prop.html">List your rooms</a></li>
+            <li class="aboutus"><a href="../aboutusSection/about-us.html">About Us</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <!-- <h1>Find The Best Stay For You</h1> -->
+             <h1> Find The Best</h1>
+             <h1> Stay For You</h1>
+            <p>Find the perfect stay-luxury suites, cozy homes, and budget-friendly rooms, all in one place!</p>
+            <button class="book-now" onclick="window.location.href='../staysSection/stays.html';">Book Now</button>
+        </div>
+        <div class="hero-image">
+            <img src="../images/hotel.jpg" alt="Luxury Hotel">
+        </div>
+    </section>
+
+        <!-- Search Bar -->
+        <section class="search-bar">
+            <div class="search-container">
+            <input type="text" placeholder="Where are you going?">
+    
+            <!-- Check-in Date -->
+            <div class="date-container">
+                <input type="text" id="checkin" placeholder="Check-in Date" readonly onclick="openDatePicker('checkin')">
+            </div>
+    
+            <!-- Check-out Date -->
+            <div class="date-container">
+                <input type="text" id="checkout" placeholder="Check-out Date" readonly onclick="openDatePicker('checkout')">
+            </div>
+
+            <!-- Number of People -->
+                <div>
+                <input type="number" placeholder="Number of People" min="0">
+            </div>
+    
+            <button class="search-btn">Search</button>
+            </div>
+        </section>
+
+<!-- Browse by Property Type Section -->
+<section class="property-types">
+    <h2>Browse by Room Type</h2>
+    <div class="property-slider-container">
+        <button class="property-slide-button left"></button>
+        <div class="property-slider">
+            <div class="property-slide">
+                <a href="../suiteRoom/suiteroom.html">
+                <img src="../images/suiteroom.jpg" alt="Suite">
+                <p>Suite</p>
+                </a>
+            </div>
+            <div class="property-slide">
+                <a href="../deluxeRoom/deluxeroom.html">
+                <img src="../images/deluxeroom.jpg" alt="Deluxe">
+                <p>Deluxe</p>
+                </a>
+            </div>
+
+            <!-- <div class="property-slide">
+                <a href="../singleRoom/singleroom.html">
+                <img src="../images/singleroom.jpg" alt="Single">
+                <p>Single</p>
+            </a>
+            </div> -->
+
+
+            <div class="property-slide">
+                <a href="../singleRoom/singleroom.html">
+                    <img src="../images/singleroom.jpg" alt="Single">
+                    <p>Single</p>
+                </a>
+            </div>
+
+            <div class="property-slide">
+                <a href="../doubleRoom/doubleroom.html">
+                <img src="../images/doubleroom.jpg" alt="Double">
+                <p>Double</p>
+                </a>
+            </div>
+
+            <div class="property-slide">
+                <a href="../familyRoom/familyroom.html">
+                <img src="../images/familyroom.jpg" alt="Family">
+                <p>Family</p>
+                </a>
+            </div>
+
+            <div class="property-slide">
+                <a href="../penthouseRoom/penthouse.html">
+                <img src="../images/penthouse.jpg" alt="penthouse">
+                <p>Penthouse</p>
+                </a>
+            </div>
+
+        </div>
+        <button class="property-slide-button right"></button>
+    </div>
+</section>
+
+<div class="leaf-container">
+    <div class="leaves">
+        <div class="leaf">
+            <img src="../images/leafimage1.jpg" alt="Leaf Image 1">
+        </div>
+        <div class="leaf right-leaf">
+            <img src="../images/leafimage2.jpg" alt="Leaf Image 2">
+        </div>
+    </div>
+    <div class="event-text">
+        <h2>Best Place for <br> special events <br> Since 2024</h2>
+    </div>
+</div>
+
+<!-- Best Booked Places Section -->
+<section class="bestbooked-types">
+    <h2>Best Booked Places</h2>
+    <div class="bestbooked-slider-container">
+        <button class="bestbooked-slide-button left"><i class="fas fa-chevron-left"></i></button>
+        <div class="bestbooked-slider">
+            <div class="bestbooked-slide">
+                <img src="../images/bestbookedplace1.jpg" alt="bestbookedplace1">
+            </div>
+            <div class="bestbooked-slide">
+                <img src="../images/bestbookedplace2.jpg" alt="bestbookedplace2">
+            </div>
+            <div class="bestbooked-slide">
+                <img src="../images/bestbookedplace3.jpg" alt="bestbookedplace3">
+            </div>
+            <div class="bestbooked-slide">
+                <img src="../images/bestbookedplace4.jpg" alt="bestbookedplace4">
+            </div>
+            <div class="bestbooked-slide">
+                <img src="../images/bestbookedplace5.jpg" alt="bestbookedplace5">
+            </div>
+        </div>
+        <button class="bestbooked-slide-button right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</section>
+    <section class="testimonials">
+        <h2>What People Say About Us</h2>
+
+        <div class="testimonial-container">
+            
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="profile-picture">
+                    <img src="../images/person1.jpg" alt="User">
+                </div>
+                <div class="room-image">
+                    <img src="../images/room1.jpg" alt="Room">
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i> <!-- Empty star -->
+                </div>
+                <p>"Great stay! Very comfortable and clean."</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="profile-picture">
+                    <img src="../images/person2.jpg" alt="User">
+                </div>
+                <div class="room-image">
+                    <img src="../images/bestbookedplace5.jpg" alt="Room">
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Amazing experience, will visit again!"</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="profile-picture">
+                    <img src="../images/person3.jpg" alt="User">
+                </div>
+                <div class="room-image">
+                    <img src="../images/bestbookedplace4.jpg" alt="Room">
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>"Decent place but could be better."</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Online Rental Website. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+</body>
+</html>

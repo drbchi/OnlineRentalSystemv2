@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stays - Visitor Place</title>
+
+    <!-- Fonts and Icons (same as index.html) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Use visitor-sec.css as the primary stylesheet -->
+    <link rel="stylesheet" href="penthouse.css">
+</head>
+<body>
+    <!-- Header Section (same as index.html) -->
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Casalux Logo" class="logo-img">
+                <div class="logo">Casalux</div>
+            </div>
+            <div class="auth-buttons">
+                <!-- <a href="../loginANDsignup/sign-up.html">
+                <button class="register">Register</button>
+            </a>
+
+            <a href="../loginANDsignup/log-in.html">
+                <button class="signin">Sign in</button>
+            </a> -->
+                <button class="register"><a href="../loginANDsignup/sign-up.html" style="text-decoration: none; color: inherit;">Register</a></button>
+                <button class="signin"><a href="../loginANDsignup/log-in.html" style="text-decoration: none; color: inherit;">Sign in</a></button>
+            </div>
+        </div> 
+
+        <!-- Navigation Menu (below the logo) -->
+        <nav>
+            <ul>
+                <li class="home"><a href="../visitors/visitors.html">Home</a></li>
+                <li class="stays"><a href="../staysSection/stays.html" >Stays</a></li>
+                <li class="listyourproperty"><a href="list-types.html">List your rooms</a></li>
+                <li class="aboutus"><a href="../aboutusSection/about-us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+        <!-- Property Grid -->
+        <div class="property-grid" id="property-grid">
+            <!-- Properties will be dynamically added here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be dynamically added here -->
+        </div>
+
+
+        <!-- Featured Rooms Section -->
+        <div class="featured-rooms-section">
+            <h2>Penthouse</h2>
+              <div id="featured-rooms-grid" class="featured-rooms-grid">
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2025 Online Rental Website. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+
+
+    <!-- <script src=".js"></script> -->
+</body>
+<script>
+    fetch('../apis/visitor.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "action": "getrooms",
+                "roomtype": "penthouse"
+            })
+        })
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+            if (data.status === 200) {
+                displayRooms(data.data); // Call function to display rooms
+            } else {
+                console.error("Error:", data.message);
+                const container = document.getElementById('featured-rooms-grid');
+                container.innerHTML = `<p>${data.message}</p>`;
+            }
+        })
+        .catch(error => console.error("Fetch error:", error));
+
+    function displayRooms(rooms) {
+    const container = document.getElementById('featured-rooms-grid'); // Ensure this is a <div> in HTML
+    container.innerHTML = ""; // Clear previous data
+
+    rooms.forEach(room => {
+        const roomDiv = document.createElement('div');
+        roomDiv.classList.add('featured-room'); // Assign class for styling
+
+        roomDiv.innerHTML = `
+            <div class="room-box">
+                <img src="${room.images}" alt="Room ${room.id}">
+                <h3>Room ${room.id} - ${room.title}</h3>
+            </div>
+            <div class="room-details">
+                <p><strong>Description:</strong> ${room.description}</p>
+                <p><strong>Price:</strong> $${room.price}/night</p>
+                <p><strong>Room Type:</strong> ${room.roomtype}</p>
+                <p><strong>Capacity:</strong> ${room.capacity}</p>
+                <p><strong>Location:</strong> ${room.location}</p>
+                <a href="../loginANDsignup/log-in.html">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+        `;
+
+        container.appendChild(roomDiv); // Append each room div inside the main container
+    });
+}
+
+</script>
+</html>

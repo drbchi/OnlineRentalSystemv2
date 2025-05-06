@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stays - Visitor Place</title>
+
+    <!-- Fonts and Icons (same as index.html) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Use visitor-sec.css as the primary stylesheet -->
+    <link rel="stylesheet" href="deluxeroom.css">
+</head>
+<body>
+    <!-- Header Section (same as index.html) -->
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Casalux Logo" class="logo-img">
+                <div class="logo">Casalux</div>
+            </div>
+            <div class="auth-buttons">
+                <!-- <a href="../loginANDsignup/sign-up.html">
+                <button class="register">Register</button>
+            </a>
+
+            <a href="../loginANDsignup/log-in.html">
+                <button class="signin">Sign in</button>
+            </a> -->
+                <button class="register"><a href="../loginANDsignup/sign-up.html" style="text-decoration: none; color: inherit;">Register</a></button>
+                <button class="signin"><a href="../loginANDsignup/log-in.html" style="text-decoration: none; color: inherit;">Sign in</a></button>
+            </div>
+        </div> 
+
+        <!-- Navigation Menu (below the logo) -->
+        <nav>
+            <ul>
+                <li class="home"><a href="../visitors/visitors.html">Home</a></li>
+                <li class="stays"><a href="../staysSection/stays.html" >Stays</a></li>
+                <li class="listyourproperty"><a href="list-types.html">List your rooms</a></li>
+                <li class="aboutus"><a href="../aboutusSection/about-us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+        <!-- Property Grid -->
+        <div class="property-grid" id="property-grid">
+            <!-- Properties will be dynamically added here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be dynamically added here -->
+        </div>
+
+
+        <!-- Featured Rooms Section -->
+        <div class="featured-rooms-section">
+            <h2>Deluxe Rooms</h2>
+            <!-- <div class="featured-rooms-grid">
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/9d/37/75/9d37751cbbff98ac225046309a084796.jpg" alt="Room 1">
+                        <h3>Room 1 - Ocean View Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> Spacious room with a private balcony offering stunning views of the ocean.</p>
+                        <p><strong>Price:</strong> $300/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong>  Maui, Hawaii</p>
+                        
+
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/25/e2/f4/25e2f47c5bcf2a95a006fbd9e58de62a.jpg" alt="Room 2">
+                        <h3>Room 2 - Mountain Retreat Deluxe Suite</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong>  Luxurious room with floor-to-ceiling windows overlooking the mountains. </p>
+                        <p><strong>Price:</strong> $350/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults, i child</p>
+                        <p><strong>Location:</strong>  Aspen, Colorado</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/b5/4b/e9/b54be9f66284a6cbf109d25e9f1ba84a.jpg" alt="Room 3">
+                        <h3>Room 3 - Urban Chic Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A compact single room, ideal for solo travelers seeking comfort.</p>
+                        <p><strong>Price:</strong> $300/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adultts</p>
+                        <p><strong>Location:</strong>  New York City, USA</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/18/70/6d/18706d0d7bc24055d5566607eb61af3b.jpg" alt="Room 4">
+                        <h3>Room 4 - Tropical Garden Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A double room with two beds, perfect for friends or couples.</p>
+                        <p><strong>Price:</strong> $150/night</p>
+                        <p><strong>Room Type:</strong>Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong>  Bali, Indonesia</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/64/41/b2/6441b29185e92aeffd91a0b69460b90b.jpg" alt="Room 5">
+                        <h3>Room 5 -  Ski-In/Ski-Out Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong>  A serene room with large windows overlooking the lush forest, perfect for nature lovers.</p>
+                        <p><strong>Price:</strong> $400/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults, 1 child</p>
+                        <p><strong>Location:</strong>  Whistler, Canada</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/e1/70/64/e17064d5b9469a03e31ae52fbf8f9795.jpg" alt="Room 6">
+                        <h3>Room 6 - Historic Elegance Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A room in a restored 19th-century building, featuring antique furniture.</p>
+                        <p><strong>Price:</strong> $500/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong> Maldives</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/28/27/53/28275310c6bfc4515f4c4095c88ce7f4.jpg" alt="Room 7">
+                        <h3>Room 7 - Luxury Safari Deluxe Tent</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A glamorous tent.</p>
+                        <p><strong>Price:</strong> $400/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong>  Serengeti, Tanzania</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/10/5c/11/105c11cc804ba9ff2096dca23c2b041a.jpg" alt="Room 8">
+                        <h3>Room 8 - Vineyard Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong>A romantic room overlooking a vineyard, featuring a queen-sized bed.</p>
+                        <p><strong>Price:</strong> $300/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong>   Napa Valley, California </p>
+
+                        
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/2b/34/c4/2b34c4af861fd31eebb342c0eb93923b.jpg" alt="Room 9">
+                        <h3>Room 9 -  Lakeside Deluxe Cabin</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A rustic yet luxurious cabin by the lake, featuring a king-sized bed.</p>
+                        <p><strong>Price:</strong> $350/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults, 2 children</p>
+                        <p><strong>Location:</strong>  Lake Tahoe, USA</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/0f/89/4f/0f894f76bf5cd28ae8fe38f6e834a334.jpg" alt="Room 10">
+                        <h3>Room 10 -Zen Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A minimalist room with traditional Japanese decor, tatami mats, a futon bed, and a private garden.</p>
+                        <p><strong>Price:</strong> $240/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong>  Kyoto, Japan</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/1a/b1/95/1ab195a91546d2c59382026c5fdfbb7c.jpg" alt="Room 9">
+                        <h3>Room 11 - Desert Oasis Deluxe Room</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A tranquil retreat with breathtaking ocean views.</p>
+                        <p><strong>Price:</strong> $400/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults</p>
+                        <p><strong>Location:</strong>  Sedona, Arizona</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+                
+                <div class="featured-room">
+                    <div class="room-box">
+                        <img src="https://i.pinimg.com/736x/84/4a/9f/844a9f46961ae4d0fb4e31ffd958d83a.jpg" alt="Room 9">
+                        <h3>Room 12 - Treehouse Deluxe Suite</h3>
+                    </div>
+                    <div class="room-details">
+                        <p><strong>Description:</strong> A luxurious treehouse nestled in the forest, featuring a king-sized bed, a balcony, and floor-to-ceiling windows.</p>
+                        <p><strong>Price:</strong> $160/night</p>
+                        <p><strong>Room Type:</strong> Deluxe</p>
+                        <p><strong>Capacity:</strong> 2 adults, 1 child</p>
+                        <p><strong>Location:</strong>  Costa Rica</p>
+                        
+                        <a href="../loginANDsignup/log-in.html">
+                            <button class="book-now">Book now</button>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                
+
+                
+            </div> -->
+             <div id="featured-rooms-grid" class="featured-rooms-grid">
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2025 Online Rental Website. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+
+
+    <!-- <script src=".js"></script> -->
+</body>
+<script>
+    fetch('../apis/visitor.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "action": "getrooms",
+                "roomtype": "deluxe"
+            })
+        })
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+            if (data.status === 200) {
+                displayRooms(data.data); // Call function to display rooms
+            } else {
+                console.error("Error:", data.message);
+                const container = document.getElementById('featured-rooms-grid');
+                container.innerHTML = `<p>${data.message}</p>`;
+            }
+        })
+        .catch(error => console.error("Fetch error:", error));
+
+    function displayRooms(rooms) {
+    const container = document.getElementById('featured-rooms-grid'); // Ensure this is a <div> in HTML
+    container.innerHTML = ""; // Clear previous data
+
+    rooms.forEach(room => {
+        const roomDiv = document.createElement('div');
+        roomDiv.classList.add('featured-room'); // Assign class for styling
+
+        roomDiv.innerHTML = `
+            <div class="room-box">
+                <img src="${room.images}" alt="Room ${room.id}">
+                <h3>Room ${room.id} - ${room.title}</h3>
+            </div>
+            <div class="room-details">
+                <p><strong>Description:</strong> ${room.description}</p>
+                <p><strong>Price:</strong> $${room.price}/night</p>
+                <p><strong>Room Type:</strong> ${room.roomtype}</p>
+                <p><strong>Capacity:</strong> ${room.capacity}</p>
+                <p><strong>Location:</strong> ${room.location}</p>
+                <a href="../loginANDsignup/log-in.html">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+        `;
+
+        container.appendChild(roomDiv); // Append each room div inside the main container
+    });
+}
+
+</script>
+</html>
