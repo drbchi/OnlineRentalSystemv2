@@ -133,3 +133,53 @@ document.addEventListener("DOMContentLoaded", () => {
         propertySlider.scrollBy({ left: -220, behavior: "smooth" });
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const authButtons = document.querySelector(".auth-buttons");
+    const userEmail = localStorage.getItem("userEmail");
+
+    if (userEmail && authButtons) {
+        // Clear the existing Register and Sign In buttons
+        authButtons.innerHTML = "";
+
+        // Get first letter of email
+        const firstLetter = userEmail.charAt(0).toUpperCase();
+
+        // Create a profile circle
+        const profileCircle = document.createElement("div");
+        profileCircle.textContent = firstLetter;
+        profileCircle.style.width = "35px";
+        profileCircle.style.height = "35px";
+        profileCircle.style.borderRadius = "50%";
+        profileCircle.style.backgroundColor = "purple";
+        profileCircle.style.color = "white";
+        profileCircle.style.display = "flex";
+        profileCircle.style.justifyContent = "center";
+        profileCircle.style.alignItems = "center";
+        profileCircle.style.fontWeight = "bold";
+        profileCircle.style.fontSize = "16px";
+        profileCircle.style.cursor = "pointer";
+        profileCircle.title = "Click to log out";
+
+        profileCircle.addEventListener("click", () => {
+            if (confirm("Do you want to log out?")) {
+                localStorage.removeItem("userEmail");
+                location.reload();
+            }
+        });
+
+        authButtons.appendChild(profileCircle);
+    }
+});
