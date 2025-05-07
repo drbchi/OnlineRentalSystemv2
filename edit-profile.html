@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Profile Page</title>
+  <link rel="stylesheet" href="edit-profile.css">
+</head>
+<body>
+  <div class="edit-profile-container">
+    <div class="edit-profile-card">
+      <a href="profile.html" class="back-arrow">←</a>
+      <div class="header">
+        <h1>Edit Profile</h1> 
+        <img src="https://i.pinimg.com/736x/74/df/03/74df03dd4d6156eab4eed9e5bec7bd52.jpg" alt="Profile" class="profile-picture" />
+      </div>
+      <form id="edit-profile-form">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required />
+        <div class="buttons">
+          <button type="button" class="cancel-btn">Cancel</button>
+          <button type="submit" class="save-btn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="edit-profile.js"></script>
+</body>
+</html>
