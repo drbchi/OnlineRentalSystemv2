@@ -1,6 +1,16 @@
 function togglePasswordVisibility(inputId) {
     const input = document.getElementById(inputId);
-    input.type = input.type === "password" ? "text" : "password";
+    const eyeIcon = document.getElementById(`eye-${inputId}`);
+
+    if (input.type === "password") {
+        input.type = "text";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    } else {
+        input.type = "password";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    }
 }
 
 document.getElementById("signup-form").addEventListener("submit", function(e) {
@@ -33,25 +43,41 @@ document.getElementById("signup-form").addEventListener("submit", function(e) {
                         cancelButtonText: "Not now"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.href = "../PropertyManagement/prop.html"; // Adjust as needed
+                            window.location.href = "../PropertyManagement/prop.html";
                         } else {
                             Swal.fire("No problem!", "You can list your property anytime from your dashboard.", "info");
                         }
                     });
-                } else if(role =="user"){
+                } 
+                // else if (role === "user") {
+                //     Swal.fire("Welcome!", "Account created successfully!", "success").then(() => {
+                //         window.location.href = "../Client/client.html";
+                //     });
+                // } 
+
+                else if (role === "user") {
+                    const email = formData.get("email");
+                    localStorage.setItem("userEmail", email); // ✅ Save email for profile icon
+                
                     Swal.fire("Welcome!", "Account created successfully!", "success").then(() => {
-                        window.location.href = "../Client/client.html"; 
-                    });
+                        window.location.href = "../visitors/visitors.html"; // ✅ redirect to existing page
+                        console.log("✅ Redirecting to visitors.html from UPDATED sign.up.js");
 
-                } else if (role === "admin") {
+                    });
+                }
+                
+
+
+
+
+
+                else if (role === "admin") {
                     Swal.fire("Admin Created!", "Redirecting to admin dashboard...", "success").then(() => {
-                        window.location.href = "../admin/admin/admin.html"; 
+                        window.location.href = "../admin/admin/admin.html";
                     });
-
                 } else {
                     Swal.fire("Success", "Account created successfully!", "success").then(() => location.reload());
                 }
-                                    
             } else if (response === "email_exists") {
                 Swal.fire("Oops!", "Your email has already been used!", "warning");
             } else if (response === "invalid_email") {
