@@ -40,7 +40,11 @@ try {
 
     file_put_contents('debug.log', "Input received at " . date('Y-m-d H:i:s') . ":\n" . print_r($input, true) . "\n\n", FILE_APPEND);
 
-    $required = ['firstName', 'lastName', 'phone', 'checkin', 'checkout', 'checkInTime', 'checkOutTime', 'paymentMethod', 'roomType'];
+    $required = ['firstName', 'lastName', 'phone', 'checkin', 'checkout', 'checkInTime', 'checkOutTime', 'paymentMethod', 'roomTitle'];
+
+
+
+
     foreach ($required as $field) {
         if (!isset($input[$field]) || $input[$field] === 'Not Selected' || $input[$field] === '') {
             throw new Exception("Missing or invalid $field");
@@ -57,9 +61,12 @@ try {
         'check_in_time' => convertToMySQLTime($input['checkInTime']),
         'check_out_time' => convertToMySQLTime($input['checkOutTime']),
         'payment_method' => $input['paymentMethod'],
-        'room_type' => $input['roomType'],
-        'user_id' => $input['userId'] ?? 'guest'
+        // 'room_type' => $input['roomType'],
+        'user_id' => $input['userId'] ?? 'guest',   // ✅ COMMA HERE
+        'status' => 'pending',
+        'room_title' => $input['roomTitle']          // ✅ Now room_title is correctly added
     ];
+    
 
     // Validation
     if (!preg_match('/^[a-zA-Z\s-]+$/', $data['first_name'])) throw new Exception('First name can only contain letters, spaces, and hyphens');
@@ -69,18 +76,21 @@ try {
     if ($data['checkout'] <= $data['checkin']) throw new Exception('Check-out date must be after check-in date');
     if (!$data['check_in_time'] || !$data['check_out_time']) throw new Exception('Invalid time format');
 
+
+
     $sql = "INSERT INTO booking (
         first_name, last_name, phone, region, checkin, checkout, 
-        check_in_time, check_out_time, payment_method, room_type, user_id
+        check_in_time, check_out_time, payment_method, user_id, room_title, status
     ) VALUES (
         :first_name, :last_name, :phone, :region, :checkin, :checkout,
-        :check_in_time, :check_out_time, :payment_method, :room_type, :user_id
+        :check_in_time, :check_out_time, :payment_method, :user_id, :room_title, :status
     )";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($data);
 
     $bookingId = $pdo->lastInsertId();
+    
 
     echo json_encode([
         'success' => true,
