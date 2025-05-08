@@ -51,85 +51,52 @@ function openDatePicker(id) {
     });
 }
 
-// Function to fetch and render room types
-// Function to fetch and render room types
-async function fetchRoomTypes() {
-    try {
-        const response = await fetch('http://localhost:3000/api/room-types');
-        const roomTypes = await response.json();
+// Function to handle search button click
+function handleSearch() {
+    const location = document.querySelector('.search-container input[type="text"]').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const people = document.querySelector('.search-container input[type="number"]').value;
 
-        const propertySlider = document.querySelector('.property-slider');
-        propertySlider.innerHTML = ''; // Clear existing content
-
-        roomTypes.forEach(room => {
-            const slide = document.createElement('div');
-            slide.classList.add('property-slide');
-            slide.innerHTML = `
-                <img src="http://localhost:3000${room.image}" alt="${room.type}">
-                <p>${room.type}</p>
-            `;
-            propertySlider.appendChild(slide);
-        });
-    } catch (error) {
-        console.error('Error fetching room types:', error);
+    // Basic validation
+    if (!location || !checkin || !checkout || !people || PEOPLE < 1) {
+        alert('Please fill in all fields and ensure the number of people is at least 1.');
+        return;
     }
+
+    // Validate dates
+    const checkinDate = new Date(checkin);
+    const checkoutDate = new Date(checkout);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize today for comparison
+
+    if (checkinDate < today) {
+        alert('Check-in date cannot be in the past.');
+        return;
+    }
+
+    if (checkoutDate <= checkinDate) {
+        alert('Check-out date must be after check-in date.');
+        return;
+    }
+
+    // Log search data (replace with actual logic, e.g., redirect or API call)
+    console.log('Search Parameters:', {
+        location,
+        checkin,
+        checkout,
+        people
+    });
+
+    // Example: Redirect to stays page with query parameters (uncomment if needed)
+    // window.location.href = `../staysSection/stays.html?location=${encodeURIComponent(location)}&checkin=${checkin}&checkout=${checkout}&people=${people}`;
 }
 
-async function fetchBestBookedPlaces() {
-    try {
-        const response = await fetch('http://localhost:3000/api/best-booked-places');
-        const bestBookedPlaces = await response.json();
-
-        const bestBookedSlider = document.querySelector('.bestbooked-slider');
-        bestBookedSlider.innerHTML = ''; // Clear existing content
-
-        bestBookedPlaces.forEach(place => {
-            const slide = document.createElement('div');
-            slide.classList.add('bestbooked-slide');
-            slide.innerHTML = `
-                <img src="http://localhost:3000${place.image}" alt="${place.type}">
-                <p>${place.type} - ${place.location} ($${place.price}/night)</p>
-            `;
-            bestBookedSlider.appendChild(slide);
-        });
-    } catch (error) {
-        console.error('Error fetching best booked places:', error);
-    }
-}
-
-// Rest of your existing code (openDatePicker, sliders, etc.) remains unchanged
-
-// Initialize sliders and fetch data on page load
+// Initialize event listeners on page load
 document.addEventListener("DOMContentLoaded", () => {
-    // Fetch and render room types
-    fetchRoomTypes();
-
-    // Fetch and render best booked places
-    fetchBestBookedPlaces();
-
-    // Horizontal Scroll for Best Booked Places
-    const bestBookedSlider = document.querySelector(".bestbooked-slider");
-    const bestBookedLeftButton = document.querySelector(".bestbooked-slide-button.left");
-    const bestBookedRightButton = document.querySelector(".bestbooked-slide-button.right");
-
-    bestBookedRightButton.addEventListener("click", () => {
-        bestBookedSlider.scrollBy({ left: 220, behavior: "smooth" });
-    });
-
-    bestBookedLeftButton.addEventListener("click", () => {
-        bestBookedSlider.scrollBy({ left: -220, behavior: "smooth" });
-    });
-
-    // Horizontal Scroll for Property Types (if needed)
-    const propertySlider = document.querySelector(".property-slider");
-    const propertyLeftButton = document.querySelector(".property-slide-button.left");
-    const propertyRightButton = document.querySelector(".property-slide-button.right");
-
-    propertyRightButton.addEventListener("click", () => {
-        propertySlider.scrollBy({ left: 220, behavior: "smooth" });
-    });
-
-    propertyLeftButton.addEventListener("click", () => {
-        propertySlider.scrollBy({ left: -220, behavior: "smooth" });
-    });
+    // Attach search button event listener
+    const searchButton = document.querySelector('.search-btn');
+    if (searchButton) {
+        searchButton.addEventListener('click', handleSearch);
+    }
 });

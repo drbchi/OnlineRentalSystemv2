@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="forgot-password.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Verify OTP</h2>
+            <p>Enter the OTP you received to reset your password</p>
+            <p class="otp-expiry">This OTP expires in 10 minutes.</p>
+            <form id="verify-otp-form">
+                <input type="hidden" name="email" id="email">
+                <input type="hidden" name="flow" id="flow">
+                <input type="text" name="otp" placeholder="Enter OTP" required>
+                <button type="submit">Verify OTP</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Get the email and flow from the URL query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            const flow = urlParams.get('flow') || 'forgot'; // Default to 'forgot' if not specified
+
+            // Log the URL parameters for debugging
+            console.log('URL email:', email);
+            console.log('URL flow:', flow);
+
+            // Set the email and flow fields
+            if (email) {
+                $('#email').val(decodeURIComponent(email));
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Email not provided in the URL.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'forgot-password.html';
+                });
+                return; // Stop further execution if email is missing
+            }
+
+            $('#flow').val(flow);
+
+            // Log the field values after setting them
+            console.log('Email field value:', $('#email').val());
+            console.log('Flow field value:', $('#flow').val());
+
+            $('#verify-otp-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Log the form data before sending
+                const formData = $(this).serialize();
+                console.log('Form data being sent:', formData);
+
+                // Additional check to ensure all fields are present
+                const emailValue = $('#email').val();
+                const flowValue = $('#flow').val();
+                const otpValue = $('input[name="otp"]').val();
+                console.log('Email:', emailValue);
+                console.log('Flow:', flowValue);
+                console.log('OTP:', otpValue);
+
+                if (!emailValue || !flowValue || !otpValue) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Please ensure all fields are filled.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    return;
+                }
+
+                $.ajax({
+                    url: 'verify-otp.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        console.log('Server response:', response);
+                        if (response.startsWith('success:')) {
+                            const redirectUrl = response.split('success:')[1];
+                            Swal.fire({
+                                title: 'Success',
+                                text: 'OTP verified successfully! Redirecting...',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                window.location.href = redirectUrl;
+                            });
+                        } else if (response === 'invalid_otp') {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Invalid or expired OTP!',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'An error occurred: ' + response,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('AJAX error:', status, error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to verify OTP. Please try again.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
