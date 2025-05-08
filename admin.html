@@ -6,36 +6,60 @@
     <title>Room Approval</title>
     <link rel="stylesheet" href="admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="title">
-                <span class="icon">?</span>
-                <h2>Pending Room Requests</h2>
-            </div>
+        <div class="sidebar">
+            <button class="nav-btn active" id="pendingRoomsBtn">PENDING ROOMS</button>
+            <div class="separator"></div>
+            <button class="nav-btn" id="userProfileBtn">USER PROFILE</button>
         </div>
+        <div class="content">
+            <div class="header">
+                <div class="title">
+                    <h2 id="sectionTitle">PENDING ROOM REQUESTS</h2>
+                </div>
+            </div>
 
-        <div class="confirmation" id="confirmationMessage"></div>
+            <div class="confirmation" id="confirmationMessage"></div>
 
-        <div class="rooms-list">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Room Name</th>
-                        <th>Room Type</th>
-                        <th>Location</th>
-                        <th>Capacity</th>
-                        <th>Price/Day</th>
-                        <th>Image</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="roomsTableBody"></tbody>
-            </table>
+            <!-- Pending Rooms Section -->
+            <div class="rooms-list" id="pendingRoomsSection">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Room Name</th>
+                            <th>Room Type</th>
+                            <th>Location</th>
+                            <th>Capacity</th>
+                            <th>Price/Day</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roomsTableBody"></tbody>
+                </table>
+            </div>
+
+            <!-- User Profile Section -->
+            <div class="rooms-list" id="userProfileSection" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userProfileTableBody"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script src="admin.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9397a320999544dc',t:'MTc0NjE5MDE1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
