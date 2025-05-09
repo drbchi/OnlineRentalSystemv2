@@ -227,33 +227,40 @@ nav ul li a.active {
 .search-container {
     display: flex;
     gap: 5px;
-    border: 3px solid black;
-    background-color: #DECCBF;
-    padding: 2px;
-    border-radius: 8px;
+    background-color: #DECCBF; /* Background for the container */
+    padding: 5px; /* Increased padding for better spacing */
+    border-radius: 10px; /* Slightly larger radius for a softer look */
+    border: none; /* Remove the outer border to prevent black corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .search-container input {
-    padding: 10px;
+    padding: 10px 15px; /* Increased padding for better input field size */
     border: 1px solid #ccc;
     background-color: white;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
+    width: 150px; /* Fixed width for consistency */
+    color: #666; /* Text color to match placeholder style */
+}
+
+.search-container input::placeholder {
+    color: #999; /* Placeholder color to match the screenshot */
 }
 
 .search-container button {
-    padding: 10px;
+    padding: 10px 20px; /* Increased padding for a larger button */
     border: none;
-    background-color: black;
+    background-color: #333; /* Darker shade for better contrast */
     color: white;
     font-weight: bold;
-    border-radius: 8px;
+    border-radius: 0 8px 8px 0; /* Rounded only on the right side */
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .search-container button:hover {
-    background-color: #222;
+    background-color: #555; /* Slightly lighter on hover */
     transform: scale(1.05);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
 }
@@ -261,17 +268,17 @@ nav ul li a.active {
 
 /* Property Types Section (Browse by Room Type) */
 .property-types {
-    padding: 40px;
+    padding: 60px 20px;
     text-align: center;
     background: white;
 }
 
 .property-types h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
+    font-size: 28px;
+    margin-bottom: 40px;
     background: transparent;
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;
+    font-weight: 700;
     transition: all 0.4s ease-in-out;
 }
 
@@ -287,53 +294,70 @@ nav ul li a.active {
     align-items: center;
     justify-content: center;
     background: white;
+    max-width: 1200px; /* Adjusted for better fit with 3 columns */
+    margin: 0 auto;
 }
 
 .property-slider {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* Explicitly 3 columns */
+    gap: 30px;
     justify-content: center;
-    width: fit-content;
-    margin: auto;
+    width: 100%;
+    margin: 0 auto;
     background: white;
-    list-style: none; 
-    padding: 0; 
+    list-style: none;
+    padding: 0 20px;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 900px) {
+    .property-slider {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .property-slider {
+        grid-template-columns: 1fr; /* 1 column on small screens */
+    }
 }
 
 .property-slide {
     position: relative;
     text-align: center;
     background: white;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .property-slide img {
-    width: 250px;
-    height: 180px;
-    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
     transition: all 0.5s ease-out;
     display: block;
 }
 
 /* Caption for Property Slide */
 .property-slide p {
-    padding: 10px;
+    padding: 15px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    font-size: 16px;
     background: white;
-    margin: 0; 
+    margin: 0;
     transition: all 0.4s ease-in-out;
-    /* text-decoration: none; */
 }
 
 .property-slide a {
-    text-decoration: none; 
-    color: inherit; 
+    text-decoration: none;
+    color: inherit;
 }
-
 
 /* Overlay for Hover Effect */
 .property-slide::after {
@@ -350,14 +374,14 @@ nav ul li a.active {
 
 /* Enhanced Image Hover Effect for Property Slide */
 .property-slide:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .property-slide:hover img {
-    transform: scale(1.08);
+    transform: scale(1.1);
     filter: brightness(1.1) contrast(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .property-slide:hover p {
@@ -373,24 +397,23 @@ nav ul li a.active {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    /* opacity: 0; */
     transition: opacity 0.4s ease-in-out;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 /* Ensure no pseudo-elements are adding unwanted content */
 .property-slide::before {
-    content: none; 
+    content: none;
 }
 
 /* Style the slider buttons (if used) */
 .property-slide-button {
     background: white;
     border: none;
-    padding: 10px;
-    font-size: 20px;
+    padding: 12px;
+    font-size: 22px;
     cursor: pointer;
-    display: none; 
+    display: none;
 }
 
 
@@ -401,7 +424,7 @@ nav ul li a.active {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 50px;
+    padding: 60px 20px; /* Increased padding for better spacing */
     background-color: white;
 }
 
@@ -409,32 +432,51 @@ nav ul li a.active {
     background-color: white;
     display: flex;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 20px; /* Slightly increased margin */
 }
 
 .leaf {
-    width: 120px;
-    height: 160px;
-    border-top-left-radius: 60px;
-    border-bottom-right-radius: 60px;
+    width: 150px; /* Increased width */
+    height: 200px; /* Increased height */
+    border-radius: 0; /* Remove border-radius since we'll use clip-path */
     overflow: hidden;
+    clip-path: path('M75,0 C120,0 150,40 150,100 C150,160 120,200 75,200 C30,200 0,160 0,100 C0,40 30,0 75,0 Z'); /* Custom leaf shape */
+    position: relative;
 }
 
 .leaf img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.5s ease-out;
+    clip-path: path('M75,0 C120,0 150,40 150,100 C150,160 120,200 75,200 C30,200 0,160 0,100 C0,40 30,0 75,0 Z'); /* Match container shape */
 }
 
 .right-leaf {
-    margin-left: -20px;
+    margin-left: -30px; /* Adjusted overlap for larger images */
+    z-index: 1; /* Ensure right leaf is above the left */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 600px) {
+    .leaf {
+        width: 120px;
+        height: 160px;
+        clip-path: path('M60,0 C96,0 120,32 120,80 C120,128 96,160 60,160 C24,160 0,128 0,80 C0,32 24,0 60,0 Z'); /* Adjusted path for smaller size */
+    }
+
+    .leaf img {
+        clip-path: path('M60,0 C96,0 120,32 120,80 C120,128 96,160 60,160 C24,160 0,128 0,80 C0,32 24,0 60,0 Z');
+    }
+
+    .right-leaf {
+        margin-left: -20px; /* Reduced overlap for smaller screens */
+    }
 }
 
 .event-text h2 {
     text-align: left;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px; /* Increased font size */
+    font-weight: 700;
     background-color: white;
     font-family: 'Poppins', sans-serif;
     transition: all 0.4s ease-in-out;
@@ -445,232 +487,123 @@ nav ul li a.active {
     text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Best Booked Places Section */
-.bestbooked-types {
-    padding: 50px;
-    text-align: center;
-    background: white; 
-    position: relative; 
-}
-
-.bestbooked-types h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    color: black; 
-    background: none; 
-    position: relative; 
-    display: inline-block;
-    transition: all 0.4s ease-in-out;
-}
-
-.bestbooked-types h2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    z-index: -1;
-    transition: all 0.4s ease-in-out;
-}
-
-.bestbooked-types h2:hover {
-    color: #222;
-    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.bestbooked-types h2:hover::before {
-    background: rgba(255, 255, 255, 0.5); 
-}
-
-.bestbooked-slider-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white !important;
-}
-
-.bestbooked-slider {
-    display: flex;
-    overflow-x: auto;
-    width: 80%;
-    scroll-behavior: smooth;
-    background: white !important;
-}
-
-.bestbooked-slide {
-    position: relative;
-    min-width: 250px;
-    margin: 10px;
-    text-align: center;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.bestbooked-slide img {
-    width: 250px;
-    height: 180px;
-    border-radius: 10px 10px 0 0;
-    transition: all 0.5s ease-out;
-}
-
-.bestbooked-slide::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-}
-
-.bestbooked-slide p {
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    background: white;
-    margin: 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.bestbooked-slide:hover p {
-    color: #222;
-}
-
-.bestbooked-slide:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.25);
-}
-
-.bestbooked-slide:hover img {
-    transform: scale(1.08);
-    filter: brightness(1.1) contrast(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.bestbooked-slide:hover::after {
-    opacity: 1;
-}
-
-/* Styles for the Slider Buttons */
-.bestbooked-slide-button {
-    background: white !important;
-    border: none;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-/* Style the icons inside the buttons */
-.bestbooked-slide-button i {
-    color: #000;
-    background: transparent;
-    transition: color 0.3s ease;
-}
-
-/* Position the buttons */
-.bestbooked-slide-button.left {
-    margin-right: 10px;
-}
-
-.bestbooked-slide-button.right {
-    margin-left: 10px;
-}
-
-/* Hover effect for the buttons */
-.bestbooked-slide-button:hover {
-    background: rgba(0, 0, 0, 0.1) !important; 
-    transform: scale(1.1);
-}
-
-.bestbooked-slide-button:hover i {
-    color: #333;
-}
-
 /* Testimonials Section */
 .testimonials {
     padding: 50px 20px;
+    background-color: #f9f9f9;
 }
 
 .testimonials h2 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 30px;
-    font-weight: bold;
-    transition: none;
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .testimonial-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .testimonial-card {
     position: relative;
-    width: 250px;
-    background: #ddd;
-    color: black;
-    padding: 15px;
-    border-radius: 10px;
+    width: 300px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0); /* Gradient background */
+    color: #333;
+    padding: 20px;
+    border-radius: 15px;
     text-align: center;
-    transition: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.room-image {
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .room-image img {
     width: 100%;
-    height: 180px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
-    transition: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.testimonial-card:hover .room-image img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .profile-picture {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
+    position: relative; /* Changed from absolute to relative */
+    width: 60px;
+    height: 60px;
+    margin: -30px auto 15px auto; /* Position above text, centered */
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid white;
+    border: 4px solid #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    z-index: 1;
 }
 
 .profile-picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.testimonial-card:hover .profile-picture {
+    transform: scale(1.1); /* Slight scale-up on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card:hover .profile-picture img {
+    transform: scale(1.1);
+}
+
+.author {
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .stars {
-    margin-top: 10px;
-    color: gold;
+    margin-bottom: 10px;
+    color: #ffcc00;
     font-size: 18px;
-    transition: none;
+    transition: all 0.3s ease-in-out;
 }
 
-.testimonial-card p {
-    margin-top: 10px;
+.testimonial-card:hover .stars {
+    color: #ffdd55;
+    text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+.testimonial-text {
     font-size: 14px;
-    font-weight: bold;
-    transition: none;
+    line-height: 1.5;
+    color: #666;
+    font-family: 'Arial', sans-serif;
+    padding: 10px 0;
 }
 
 /* Footer */

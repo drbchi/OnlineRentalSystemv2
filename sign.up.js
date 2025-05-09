@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const fromParam = urlParams.get('from');
@@ -63,3 +64,5 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.send(formData);
     });
 });
+=======
+>>>>>>> main
