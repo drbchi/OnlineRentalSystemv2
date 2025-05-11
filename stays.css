@@ -11,6 +11,7 @@ header {
     flex-direction: column;
     padding: 15px;
     font-family: 'Poppins', sans-serif;
+    padding: 20px 40px;
     background-color: #DECCBF;
 }
 
@@ -45,6 +46,9 @@ header {
     font-weight: bold;
     margin-left: 0px;
     background-color: transparent;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
 }
 
 /* Auth Buttons */
@@ -55,16 +59,14 @@ header {
 }
 
 .auth-buttons button {
-    font-family: 'Poppins', sans-serif;
-    padding: 8px 15px;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-left: 10px;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .auth-buttons button:hover {
@@ -133,6 +135,9 @@ nav ul li a.active {
 
 h1 {
     margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
 }
 
 h2 {
@@ -156,13 +161,27 @@ h2 {
 }
 
 .filter label, .sort label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
     margin-right: 10px;
 }
 
 select {
-    padding: 5px;
+
+    padding: 8px 12px;
     border-radius: 5px;
     border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
 }
 
 .pagination-info {
@@ -173,20 +192,28 @@ select {
 /* Property Grid */
 .property-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    grid-template-rows: auto auto; /* 2 rows */
     gap: 20px;
+    padding-bottom: 10px;
 }
 
 .property-card {
-    background-color: #ddd;
-    border-radius: 5px;
+    width: 100%; /* Full width within grid cell */
+    background-color: #fff;
+    border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .property-image {
     height: 150px;
-    background-color: #ccc;
 }
 
 .property-image img {
@@ -196,19 +223,31 @@ select {
 }
 
 .property-details {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
-    background-color: #fff;
 }
 
 .property-details h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
     margin: 0 0 10px;
-    font-size: 18px;
 }
 
 .property-details p {
+    font-size: 12px;
+    color: #666;
     margin: 5px 0;
-    font-size: 14px;
+}
+.location-and-book {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.location-and-book p {
+    margin: 0;
 }
 
 /* Featured Rooms Section */
@@ -260,44 +299,51 @@ select {
 }
 
 .book-now {
-    padding: 6px 12px;
-    background: black;
-    color: white;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #000;
+    color: #fff;
     border: none;
-    cursor: pointer;
-    margin-left: 280px;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 13px;
-    font-weight: bold;
+    border-radius: 15px;
     font-size: 12px;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .book-now:hover {
-    background-color: #222;
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+    background-color: #333;
 }
 
 /* Pagination */
 .pagination {
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
 }
 
 .pagination button {
     margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
+    padding: 8px 14px;
+    border: none;
     background-color: #fff;
+    color: #333;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 .pagination button.active {
     background-color: #007bff;
     color: #fff;
-    border-color: #007bff;
+    /* border-color: #007bff; */
+}
+
+.pagination button:hover {
+    background-color: #f0f0f0;
 }
 
 /* Footer */
@@ -310,33 +356,196 @@ footer {
 
 footer p {
     font-size: 14px;
-    font-weight: bold;
-    color: white;
-    background: transparent;
+    font-weight: 500;
+    color: #fff;
     margin: 5px 0;
 }
 
 .footer-links {
     margin-top: 10px;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .footer-links a {
     text-decoration: none;
-    font-weight: bold;
-    color: white !important;
-    background-color: black;
+    font-weight: 500;
+    color: #fff;
     padding: 5px 10px;
     margin: 0 10px;
-    border: none;
-    box-shadow: none;
     font-size: 14px;
-    outline: none !important;
-    display: inline-block;
 }
 
 .footer-links a:hover {
     text-decoration: underline;
-    background-color: black !important;
-    color: #ccc !important;
+    color: #ccc;
+}
+
+
+.profile-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profile-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  border-radius: 10px;
+  padding: 0;
+  width: 90%;
+  max-width: 500px;
+  height: 600px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+.close-profile-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+
+
+
+/* Login Prompt Modal (Added Popup Notification CSS) */
+#loginPromptModal.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#loginPromptModal .modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    animation: slideIn 0.4s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#loginPromptModal .modal-content .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#loginPromptModal .modal-content .close:hover {
+    color: #333;
+    transform: rotate(90deg);
+}
+
+#loginPromptModal .modal-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    text-transform: capitalize;
+}
+
+#loginPromptModal .modal-content .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+#loginPromptModal .modal-content button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #000;
+    color: #fff;
+}
+
+#loginPromptModal .modal-content button:hover {
+    background-color: #222;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    #loginPromptModal .modal-content {
+        max-width: 90%;
+        padding: 30px 20px;
+    }
+
+    #loginPromptModal .modal-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    #loginPromptModal .modal-content button {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    #loginPromptModal .modal-content .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
 }

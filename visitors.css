@@ -646,3 +646,306 @@ footer p {
     background-color: black !important;
     color: #ccc !important;
 }
+
+/* Heading for the form */
+.testimonials h3 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form container */
+#testimonialForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    max-width: 500px;
+    margin: 0 auto 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Text input and textarea */
+#testimonialForm input[type="text"],
+#testimonialForm input[type="number"],
+#testimonialForm textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+#testimonialForm input:focus,
+#testimonialForm textarea:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+/* Textarea style */
+#testimonialForm textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Submit button */
+#testimonialForm button {
+    font-family: 'Poppins', sans-serif;
+    padding: 8px 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-left: 10px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#testimonialForm button:hover {
+    transform: scale(1.05);
+    background-color: #222;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+.close:hover {
+    color: #000;
+}
+#openModalBtn {
+    cursor: pointer;
+}
+
+#openModalBtn:hover {
+    text-decoration: underline;
+}
+
+
+
+.profile-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .profile-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    border-radius: 10px;
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    height: 600px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .profile-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .close-profile-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+
+
+
+  
+/* Fade-in animation for the background */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Modal Content */
+#loginPromptModal .modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 40px 30px; /* More padding for breathing room */
+    border-radius: 20px; /* Softer, modern corners */
+    width: 90%;
+    max-width: 450px; /* Slightly wider for better readability */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+    position: relative;
+    text-align: center;
+    border: 2px solid #e0e0e0; /* Subtle border for definition */
+    animation: slideIn 0.4s ease-in-out forwards;
+}
+
+/* Slide-in animation for the modal content */
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close Button */
+#loginPromptModal .modal-content .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px; /* Larger close button for easier clicking */
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#loginPromptModal .modal-content .close:hover {
+    color: #333;
+    transform: rotate(90deg); /* Subtle rotation on hover for interactivity */
+}
+
+/* Modal Heading */
+#loginPromptModal .modal-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem; /* Larger heading for emphasis */
+    font-weight: 600;
+    color: #222; /* Darker color for contrast */
+    margin-bottom: 30px;
+    line-height: 1.4;
+    text-transform: capitalize; /* Capitalize for a polished look */
+}
+
+/* Modal Buttons Container */
+#loginPromptModal .modal-content .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased space between buttons */
+    margin-top: 20px;
+}
+
+/* Modal Buttons */
+#loginPromptModal .modal-content button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem; /* Larger text for better readability */
+    font-weight: 600;
+    padding: 15px 40px; /* Larger buttons for easier clicking */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px; /* Softer button corners */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #000; /* Black background to match existing buttons */
+    color: #fff; /* White text for contrast */
+}
+
+#loginPromptModal .modal-content button:hover {
+    background-color: #222; /* Darker black on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design for Login Prompt Modal */
+@media (max-width: 600px) {
+    #loginPromptModal .modal-content {
+        max-width: 90%;
+        padding: 30px 20px;
+    }
+
+    #loginPromptModal .modal-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    #loginPromptModal .modal-content button {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    #loginPromptModal .modal-content .button-container {
+        flex-direction: column; /* Stack buttons on small screens */
+        gap: 15px;
+    }
+}
+  
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+ 
+   /* Mobiles */
+@media (max-width: 600px) {
+    .menu {
+      display: block;
+    }
+  }
+  
+  /* Tablets */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .menu {
+      display: flex;
+    }
+  }
+  
+  /* Desktops */
+  @media (min-width: 1025px) {
+    .menu {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }

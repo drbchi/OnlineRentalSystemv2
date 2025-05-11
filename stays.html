@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stays - Visitor Place</title>
 
-    <!-- Fonts and Icons -->
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="stays.css">
 </head>
+
 <body>
-    <!-- Header Section -->
+
     <header>
         <div class="header-top">
             <div class="logo-container">
@@ -22,17 +23,20 @@
                 <div class="logo">Casalux</div>
             </div>
             <div class="auth-buttons">
-                <button class="register"><a href="../loginANDsignup/sign-up.html?from=stays" style="text-decoration: none; color: inherit;">Register</a></button>
-                <button class="signin"><a href="../loginANDsignup/log-in.html?from=stays" style="text-decoration: none; color: inherit;">Sign in</a></button>
+                <button class="register"><a href="../loginANDsignup/sign-up.html?from=stays"
+                        style="text-decoration: none; color: inherit;">Register</a></button>
+                <button class="signin"><a href="../loginANDsignup/log-in.html?from=stays"
+                        style="text-decoration: none; color: inherit;">Sign in</a></button>
             </div>
-        </div> 
+        </div>
 
-        <!-- Navigation Menu -->
+
         <nav>
             <ul>
                 <li class="home"><a href="../visitors/visitors.html">Home</a></li>
                 <li class="stays"><a href="../staysSection/stays.html" class="active">Stays</a></li>
-                <li class="listyourproperty"><a href="../PropertyManagement/prop.html">List your rooms</a></li>
+                <li class="listyourproperty"><a href="#" onclick="showLoginPrompt(); return false;">List your rooms</a></li>
+                <!-- <li class="listyourproperty"><a href="../PropertyManagement/prop.html">List your rooms</a></li> -->
                 <li class="aboutus"><a href="../aboutusSection/about-us.html">About Us</a></li>
             </ul>
         </nav>
@@ -41,7 +45,7 @@
     <div class="container">
         <h1>Stays</h1>
 
-        <!-- Filter and Sort Bar -->
+
         <div class="filter-bar">
             <div class="filter">
                 <label for="room-type">Apply filters: </label>
@@ -56,7 +60,8 @@
                 </select>
             </div>
             <div class="pagination-info" id="pagination-info">
-                Showing 1 to 6 of 16 (3 Pages)
+                <!-- Showing 1 to 6 of 16 (3 Pages) -->
+                Showing 1 to 5 of 16 (4 Pages)
             </div>
             <div class="sort">
                 <label for="sort-by">Sort By: </label>
@@ -67,26 +72,76 @@
             </div>
         </div>
 
-        <!-- Property Grid -->
-        <div class="property-grid" id="property-grid">
-            <!-- Properties will be dynamically added here -->
+        <div id="no-results-message"
+            style="display:none; text-align:center; margin: 30px 0; color: red; font-size: 18px; font-weight: 600;">
+            No rooms available for the selected location.
         </div>
 
-        <!-- Pagination -->
+        <div class="property-grid" id="property-grid">
+
+        </div>
+
+
         <div class="pagination" id="pagination">
-            <!-- Pagination buttons will be dynamically added here -->
+
         </div>
     </div>
 
     <footer>
         <p>© 2025 Online Rental Website. All rights reserved.</p>
         <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact Us</a>
+            <a href="../profile/privacy-policy.html">Privacy Policy</a>
+            <a href="../profile/terms-and-conditions.html">Terms of Service</a>
+            <a href="../HelpSection/help.html">Help & Support</a>
         </div>
     </footer>
 
+
+    <!-- Login Prompt Modal -->
+    <div id="loginPromptModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginPrompt()">×</span>
+            <h3>Do you want to log in / sign up to owner?</h3>
+            <div class="button-container">
+                <button onclick="window.location.href='../loginANDsignup/sign-up.html';">Yes</button>
+                <button onclick="closeLoginPrompt()">No</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Profile Popup Modal -->
+    <div id="profileModal" class="profile-modal">
+        <div class="profile-modal-content">
+            <span class="close-profile-modal">&times;</span>
+            <iframe src="../profile/profile.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
     <script src="stays.js"></script>
+    <script>
+        // Modal functionality for the login prompt
+        function showLoginPrompt() {
+            console.log("Opening modal"); // Debug log
+            const modal = document.getElementById("loginPromptModal");
+            if (modal) {
+                modal.style.display = "block";
+            } else {
+                console.error("Modal element not found");
+            }
+        }
+
+        function closeLoginPrompt() {
+            console.log("Closing modal"); // Debug log
+            const modal = document.getElementById("loginPromptModal");
+            if (modal) {
+                modal.style.display = "none";
+            }
+        }
+    
+    
+    (function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'938ced76ce211357',t:'MTc0NjA3Nzg1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
+
 </html>
