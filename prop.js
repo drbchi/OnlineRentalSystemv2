@@ -26,7 +26,7 @@ document.getElementById('create-form').addEventListener('submit', async function
     fetchProperties();
 });
 
-// READ (Fetch Properties)
+// READ (Fetch and Display Properties)
 async function fetchProperties() {
     const response = await fetch(apiUrl, {
         method: 'POST',
@@ -35,8 +35,8 @@ async function fetchProperties() {
     });
 
     const data = await response.json();
-    console.log(data);
 
+    // Populate property table
     let tableBody = document.getElementById('property-list');
     if (tableBody) {
         tableBody.innerHTML = '';
@@ -54,6 +54,41 @@ async function fetchProperties() {
             tableBody.innerHTML += row;
         });
     }
+
+    // Populate valid property IDs for update (skip invalid ones)
+    let updateIdDropdown = document.getElementById('update_id');
+    if (updateIdDropdown) {
+        updateIdDropdown.innerHTML = '<option value="">Select Property ID</option>';
+        data.forEach(property => {
+            if (property.id > 0) {
+                let option = document.createElement('option');
+                option.value = property.id;
+                option.text = `ID ${property.id} - ${property.name}`;
+                updateIdDropdown.appendChild(option);
+            }
+        });
+    }
+
+    // Populate valid property IDs for delete (optional dropdown)
+    let deleteIdDropdown = document.getElementById('delete_id_dropdown');
+    if (deleteIdDropdown) {
+        deleteIdDropdown.innerHTML = '<option value="">Or select from list</option>';
+        data.forEach(property => {
+            if (property.id > 0) {
+                let option = document.createElement('option');
+                option.value = property.id;
+                option.text = `ID ${property.id} - ${property.name}`;
+                deleteIdDropdown.appendChild(option);
+            }
+        });
+    }
+}
+
+// Sync dropdown to delete input
+function syncDeleteId() {
+    const dropdown = document.getElementById('delete_id_dropdown');
+    const input = document.getElementById('delete_id');
+    input.value = dropdown.value;
 }
 
 // UPDATE Property
@@ -71,7 +106,7 @@ document.getElementById('update-form').addEventListener('submit', async function
         location: document.getElementById('update_location').value || null
     };
 
-    // Removing empty fields to avoid overwriting with null
+    // Remove empty or null values to avoid overwriting with null
     Object.keys(payload).forEach(key => {
         if (payload[key] === null || payload[key] === "") {
             delete payload[key];
@@ -93,9 +128,16 @@ document.getElementById('update-form').addEventListener('submit', async function
 document.getElementById('delete-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
+    let propertyId = parseInt(document.getElementById('delete_id').value);
+
+    if (isNaN(propertyId) || propertyId <= 0) {
+        alert("Please enter a valid property ID greater than 0.");
+        return;
+    }
+
     let payload = {
         action: 'delete',
-        id: document.getElementById('delete_id').value
+        id: propertyId
     };
 
     let response = await fetch(apiUrl, {
@@ -112,16 +154,14 @@ document.getElementById('delete-form').addEventListener('submit', async function
 // Load properties on page load
 fetchProperties();
 
-// Function to show the selected section and hide others
+// Switch section visibility (for tab UI)
 function showSection(sectionId) {
-    // Get all sections
     let sections = document.querySelectorAll('.section');
-    
-    // Hide all sections
     sections.forEach(section => section.classList.remove('active'));
-
-    // Show the selected section
     document.getElementById(sectionId).classList.add('active');
 }
 
-// Call this function in your HTML button click events
+// Redirect to owner app
+function redirectToOwnerApp() {
+    window.location.href = '../ownerapp/ownerapp.html';
+}
